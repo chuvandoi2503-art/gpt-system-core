@@ -1,0 +1,10 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GitHub Memory Action",
+    "version": "01.000",
+    "description": "Shared OpenAPI schema for GPT systems."
+  },
+  "paths": {},
+  "components": {}
+}
