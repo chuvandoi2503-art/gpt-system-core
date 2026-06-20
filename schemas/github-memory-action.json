@@ -1,10 +1,101 @@
-{
-  "openapi": "3.1.0",
-  "info": {
-    "title": "GitHub Memory Action",
-    "version": "01.000",
-    "description": "Shared OpenAPI schema for GPT systems."
-  },
-  "paths": {},
-  "components": {}
-}
+openapi: 3.1.0
+info:
+  title: GitHub Repository Memory Action
+  version: 3.0.0
+
+servers:
+  - url: https://api.github.com
+
+paths:
+  /repos/{owner}/{repo}/contents/{path}:
+    get:
+      operationId: getContent
+      summary: Read a file or list a directory from GitHub
+      description: If path is a file, returns file content and sha. If path is a directory, returns files and folders.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ref
+          in: query
+          required: false
+          schema:
+            type: string
+            description: Branch name, tag, or commit SHA
+      responses:
+        "200":
+          description: File or directory content
+
+    put:
+      operationId: createOrUpdateFile
+      summary: Create or update a file in GitHub
+      description: Create or update a file. For updating an existing file, sha is required. Content must be base64 encoded.
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+                - content
+                - branch
+              properties:
+                message:
+                  type: string
+                  description: Commit message
+                content:
+                  type: string
+                  description: Base64 encoded file content
+                sha:
+                  type: string
+                  description: Required when updating an existing file
+                branch:
+                  type: string
+                  description: Target branch, usually main
+                committer:
+                  type: object
+                  required:
+                    - name
+                    - email
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+      responses:
+        "200":
+          description: File updated
+        "201":
+          description: File created
+
+components:
+  schemas: {}
