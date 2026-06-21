@@ -37,7 +37,7 @@ Các file core khác chỉ đọc khi cần.
 
 Path:
 
-RULES/RULE_COMMON.md
+rules/RULE_COMMON.md
 
 Mô tả:
 
