@@ -8,7 +8,7 @@ Phiên bản: 03.000
 
 PATCH là cơ chế trung gian giữa:
 
-```text
+```
 Hội thoại
 ↓
 Memory
@@ -33,7 +33,7 @@ PATCH chỉ tồn tại trong phiên hiện tại.
 
 Sau khi được duyệt:
 
-```text
+```
 PATCH
 ↓
 Ghi vào file đích
@@ -53,13 +53,13 @@ Không lưu PATCH để tổng hợp sau.
 
 Người dùng nói:
 
-```text
+```
 Kết thúc phiên
 ```
 
 GPT phải:
 
-```text
+```
 Rà soát phiên
 ↓
 Tạo PATCH
@@ -94,7 +94,7 @@ Sử dụng khi:
 
 Ghi vào:
 
-```text
+```
 WM_04_1_DAILY.md
 ```
 
@@ -112,7 +112,7 @@ Sử dụng khi:
 
 Ghi vào:
 
-```text
+```
 WM_04_1_LONG.md
 ```
 
@@ -171,7 +171,7 @@ Nếu file đã tồn tại:
 
 GPT phải:
 
-```text
+```
 Đọc file
 ↓
 Lấy SHA
@@ -189,7 +189,7 @@ Nếu file chưa tồn tại:
 
 GPT phải:
 
-```text
+```
 Tạo PATCH
 ↓
 Chờ xác nhận
@@ -207,7 +207,7 @@ PATCH không phải nguồn chân lý.
 
 Nguồn chân lý là:
 
-```text
+```
 GitHub Repository
 ```
 
@@ -215,7 +215,7 @@ Khi cần tổng hợp:
 
 GPT đọc trực tiếp:
 
-```text
+```
 WM_03A
 WM_04_1
 LM_03B
