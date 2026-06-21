@@ -1,296 +1,300 @@
 # MEMORY_ARCHITECTURE
 
-Phiên bản: 01.000
-
-Trạng thái: Áp dụng toàn hệ
+Phiên bản: 03.000
 
 ---
 
-# 1. MỤC ĐÍCH
+# MỤC TIÊU
 
-File này mô tả kiến trúc bộ nhớ chuẩn dùng cho toàn bộ hệ GPT.
+Hệ thống bộ nhớ phải:
 
-Mục tiêu:
-
-* Dễ hiểu.
-* Dễ nhân bản.
-* Dễ bảo trì.
-* Dễ mở rộng.
-* Không phình bộ nhớ.
+* Đơn giản
+* Dễ nhân bản
+* Dễ bảo trì
+* Dễ mở rộng
+* Không phình vô hạn
+* Không tồn đọng patch
+* Có thể vận hành nhiều năm
 
 ---
 
-# 2. TRIẾT LÝ THIẾT KẾ
+# NGUYÊN TẮC
 
-Không phải mọi thứ đều cần ghi nhớ.
+GitHub là nguồn chân lý.
 
-Không phải mọi thứ đều cần lưu trữ.
+Memory phải phục vụ vận hành.
 
-Chỉ lưu những gì tạo giá trị trong tương lai.
+Không sử dụng một file memory tăng trưởng vô hạn.
 
-Nguyên tắc:
+Ưu tiên nhiều file nhỏ theo vai trò.
+
+Ưu tiên giảm dữ liệu phải nạp đầu phiên.
+
+---
+
+# CẤU TRÚC MEMORY CHUẨN
+
+## WM_03A
+
+Bộ nhớ lõi GPT.
+
+Lưu:
+
+* Vai trò
+* Mục tiêu
+* Quy trình vận hành
+* Cấu hình hệ thống
+
+Nạp đầu phiên.
+
+---
+
+## WM_04_1
+
+Không sử dụng một file duy nhất.
+
+Sử dụng thư mục:
 
 ```text
-Tri thức quan trọng
-↓
-Lưu
+WM_04_1/
+```
 
-Thông tin tạm thời
-↓
-Loại bỏ
+Bao gồm:
+
+```text
+WM_04_1_DAILY.md
+
+WM_04_1_LONG.md
 ```
 
 ---
 
-# 3. CẤU TRÚC CHUẨN
-
-Mỗi GPT chuyên ngành sử dụng:
-
-```text
-KN
-RULE
-WM
-LM
-```
-
----
-
-# 4. KNOWLEDGE (KN)
+### WM_04_1_DAILY
 
 Mục đích:
 
-Tri thức nền.
+Việc đang dở trong ngày hoặc phiên gần nhất.
 
-Thông tin ít thay đổi.
+Quy tắc:
 
-Ví dụ:
+* Nạp đầu phiên.
+* Được ghi đè.
+* Không archive.
+* Không lưu lịch sử dài hạn.
 
-* Định nghĩa GPT.
-* Triết lý hệ thống.
-* Hồ sơ lĩnh vực chuyên môn.
+Nếu việc kéo dài nhiều ngày:
 
----
-
-Cấu trúc:
+Chuyển sang:
 
 ```text
-KN_00
-KN_01
-KN_02_<GPT>
+WM_04_1_LONG.md
 ```
 
 ---
 
-Ví dụ:
-
-```text
-KN_02_ARCH
-KN_02_CONTENT
-KN_02_CRM
-```
-
----
-
-# 5. RULE
+### WM_04_1_LONG
 
 Mục đích:
 
-Luật vận hành.
-
-Quy tắc ra quyết định.
-
-Nguyên tắc ứng xử.
-
----
-
-Cấu trúc:
-
-```text
-RULE_COMMON
-RULE_<GPT>
-```
-
----
+Việc đang dở dài hạn.
 
 Ví dụ:
 
+* Dự án
+* Backlog
+* Công việc theo tuần
+* Công việc theo tháng
+* Công việc theo quý
+
+Quy tắc:
+
+* Không nạp mặc định đầu phiên.
+* Chỉ đọc khi cần.
+* Khi hoàn thành:
+
+Chuyển sang:
+
 ```text
-RULE_COMMON
+LM_04_CURRENT.md
+```
 
-RULE_ARCH
+hoặc
 
-RULE_CONTENT
+```text
+LM_03B_CURRENT.md
 ```
 
 ---
 
-# 6. WORKING MEMORY (WM)
+# LONG TERM MEMORY
+
+## LM_03B
+
+Tri thức đã kiểm chứng.
+
+Sử dụng thư mục:
+
+```text
+LM_03B/
+```
+
+---
+
+Bao gồm:
+
+```text
+LM_03B_CURRENT.md
+
+LM_03B_ARCHIVE_001.md
+
+LM_03B_ARCHIVE_002.md
+
+...
+```
+
+---
+
+### LM_03B_CURRENT
 
 Mục đích:
 
-Lưu trạng thái hiện tại.
+Tri thức mới được xác nhận.
 
-Việc đang làm.
+Quy tắc:
 
-Thông tin cần nạp đầu phiên.
+* Có thể nạp đầu phiên.
+* Chỉ giữ tri thức còn hữu ích trong vận hành gần đây.
 
----
+Khi:
 
-WM không phải lịch sử.
+* Trên 300 dòng
 
-WM không phải archive.
+hoặc
 
----
+* Trên 50 mục tri thức
 
-Cấu trúc:
+thì phải tổng hợp.
+
+Tri thức ổn định chuyển sang:
 
 ```text
-WM_03A_<GPT>
-
-WM_04_1_<GPT>
+LM_03B_ARCHIVE_xxx.md
 ```
 
 ---
 
-# 7. WM_03A
-
-Vai trò:
-
-Bộ nhớ lõi.
-
-Danh tính GPT.
-
-Mục tiêu GPT.
-
-Module GPT.
-
-Nguyên tắc GPT.
-
----
-
-Tần suất thay đổi:
-
-Rất thấp.
-
----
-
-Ví dụ:
-
-```text
-WM_03A_ARCH
-
-WM_03A_CONTENT
-```
-
----
-
-# 8. WM_04_1
-
-Vai trò:
-
-Việc đang làm.
-
-Ý tưởng đang triển khai.
-
-Backlog.
-
-Trạng thái công việc.
-
----
-
-Tần suất thay đổi:
-
-Cao.
-
----
-
-Đây là file được cập nhật nhiều nhất.
-
----
-
-# 9. LONG-TERM MEMORY (LM)
+### LM_03B_ARCHIVE_xxx
 
 Mục đích:
 
-Tri thức học được.
+Lưu tri thức đã ổn định.
 
-Bài học đã xác nhận.
+Không nạp đầu phiên.
 
-Lịch sử phát triển.
+Chỉ đọc khi cần tra cứu.
 
----
+Quy tắc tạo archive mới:
 
-Cấu trúc:
+Không tạo archive mới theo thời gian.
 
-```text
-LM_03B_<GPT>
-
-LM_04_<GPT>
-```
-
----
-
-# 10. LM_03B
-
-Vai trò:
-
-Tri thức đã xác nhận.
-
-Không lưu giả thuyết.
-
-Không lưu ý tưởng chưa kiểm chứng.
-
----
+Ưu tiên nhóm theo chủ đề.
 
 Ví dụ:
 
-* Bài học đã xác nhận.
-* Format đã thắng.
-* Quy trình đã xác nhận hiệu quả.
+```text
+LM_03B_ARCHIVE_001.md
+=
+Kiến trúc GPT
+
+LM_03B_ARCHIVE_002.md
+=
+GitHub Memory
+
+LM_03B_ARCHIVE_003.md
+=
+Content System
+```
+
+Chỉ tạo archive mới khi:
+
+* Archive hiện tại vượt khoảng 1000 dòng
+
+hoặc
+
+* Xuất hiện nhóm tri thức mới đủ lớn.
 
 ---
 
-# 11. LM_04
-
-Vai trò:
+## LM_04
 
 Nhật ký học tập.
 
-Archive.
-
-Lịch sử.
-
----
-
-Có thể dài.
-
-Không cần nạp đầu phiên.
-
----
-
-# 12. MEMORY INDEX
-
-Mỗi repository phải có:
+Sử dụng thư mục:
 
 ```text
-SYSTEM/MEMORY_INDEX.md
+LM_04/
 ```
 
 ---
 
-Vai trò:
+Bao gồm:
 
-Bản đồ hệ thống.
+```text
+LM_04_CURRENT.md
 
-GPT đọc MEMORY_INDEX trước.
-
-Sau đó mới tìm file khác.
+LM_04_ARCHIVE_YYYY_MM.md
+```
 
 ---
 
-# 13. QUY TẮC NẠP ĐẦU PHIÊN
+### LM_04_CURRENT
 
-Mặc định nạp:
+Mục đích:
+
+Lưu lịch sử học tập gần đây.
+
+Quy tắc:
+
+* Không bắt buộc nạp đầu phiên.
+* Chỉ đọc khi cần tra cứu.
+
+Khi:
+
+* Quá lớn
+
+hoặc
+
+* Hết tháng
+
+thì chuyển sang archive.
+
+---
+
+### LM_04_ARCHIVE_YYYY_MM
+
+Ví dụ:
+
+```text
+LM_04_ARCHIVE_2026_06.md
+
+LM_04_ARCHIVE_2026_07.md
+
+LM_04_ARCHIVE_2026_08.md
+```
+
+Mục đích:
+
+Lưu lịch sử cũ.
+
+Không nạp đầu phiên.
+
+Chỉ đọc khi cần tra cứu.
+
+---
+
+# KHỞI TẠO PHIÊN CHUẨN
+
+Mặc định chỉ nạp:
 
 ```text
 RULE_COMMON
@@ -299,103 +303,47 @@ RULE_<GPT>
 
 WM_03A_<GPT>
 
-WM_04_1_<GPT>
-```
+WM_04_1_DAILY
 
----
+LM_03B_CURRENT
+```
 
 Không nạp mặc định:
 
 ```text
-LM_03B_<GPT>
+WM_04_1_LONG
 
-LM_04_<GPT>
+LM_03B_ARCHIVE
+
+LM_04_CURRENT
+
+LM_04_ARCHIVE
 ```
-
----
 
 Chỉ đọc khi cần.
 
 ---
 
-# 14. LUỒNG HỌC TẬP
+# KẾT THÚC PHIÊN CHUẨN
 
-Công việc
-
-↓
-
-Kết quả
-
-↓
-
-Bài học
-
-↓
-
-LM_04
-
-↓
-
-Xác nhận
-
-↓
-
-LM_03B
-
----
-
-# 15. LUỒNG KẾT THÚC PHIÊN
-
-Kết thúc phiên
-
-↓
-
-Rà soát
-
-↓
-
-PATCH
-
-↓
-
-Người dùng duyệt
-
-↓
-
-Ghi GitHub
-
----
-
-# 16. KHÔNG LƯU
-
-Không lưu trong Memory:
-
-* Video.
-* Asset.
-* Ảnh.
-* File lớn.
-* Dữ liệu thô.
-
-Các dữ liệu này phải nằm ngoài GPT.
-
----
-
-# 17. MỤC TIÊU CUỐI
-
-Bất kỳ GPT nào trong hệ sinh thái đều phải:
-
-* Có thể khôi phục.
-* Có thể nhân bản.
-* Có thể chuyển tài khoản.
-* Có thể học tập.
-* Có thể bảo trì.
-
-Chỉ bằng:
+PATCH phải được phân loại:
 
 ```text
-GitHub Repository
-+
-Memory Architecture
-+
-GPT Builder Backup
+UPDATE_WM_03A
+
+UPDATE_WM_04_1_DAILY
+
+UPDATE_WM_04_1_LONG
+
+UPDATE_LM_03B_CURRENT
+
+UPDATE_LM_04_CURRENT
+
+DISCARD
 ```
+
+Sau khi người dùng xác nhận:
+
+Ghi trực tiếp vào file đích.
+
+Không lưu patch tồn đọng.
