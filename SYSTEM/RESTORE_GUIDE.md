@@ -1,18 +1,18 @@
 # RESTORE_GUIDE
 
-Phiên bản: 03.000
+Phiên bản: 03.001
 
 ---
 
 # MỤC TIÊU
 
-Khôi phục đúng trạng thái GPT khi:
+Khôi phục GPT khi:
 
 - Mất GPT
 - Tạo GPT mới
 - Clone GPT
-- Di chuyển repository
-- Thay đổi Action
+- Di chuyển Repository
+- Thay đổi GitHub Action
 
 GitHub là nguồn chân lý.
 
@@ -42,21 +42,28 @@ SYSTEM/MEMORY_ARCHITECTURE.md
 
 Đọc:
 
-RULE_COMMON
+RULES/RULE_COMMON.md
 
 ---
 
 ## Bước 4
 
-Đọc memory của GPT cần khôi phục.
+Đọc Runtime Repository của GPT cần khôi phục.
 
-Mặc định:
+---
 
+# KHỞI TẠO TỐI THIỂU
+
+Mặc định nạp:
+
+- RULE_<GPT>
 - WM_03A_<GPT>
 - WM_04_1_<GPT>_DAILY
 - LM_03B_<GPT>_CURRENT
 
-Không đọc mặc định:
+---
+
+Không nạp mặc định:
 
 - WM_04_1_<GPT>_LONG
 - LM_03B_<GPT>_ARCHIVE
@@ -65,13 +72,113 @@ Không đọc mặc định:
 
 ---
 
+# CẤU TRÚC MEMORY CHUẨN
+
+Runtime Repository phải sử dụng:
+
+memory/
+
+├── WM_03A/
+├── WM_04_1/
+├── LM_03B/
+└── LM_04/
+
+---
+
+# THỨ TỰ KHÔI PHỤC MEMORY
+
+## Bước 1
+
+WM_03A
+
+Mục tiêu:
+
+Khôi phục:
+
+- Vai trò
+- Mục tiêu
+- Quy trình
+- Cấu hình hệ thống
+
+---
+
+## Bước 2
+
+WM_04_1_DAILY
+
+Mục tiêu:
+
+Khôi phục:
+
+- Việc đang làm
+- Việc đang dở
+- Bước tiếp theo
+
+---
+
+## Bước 3
+
+LM_03B_CURRENT
+
+Mục tiêu:
+
+Khôi phục:
+
+- Tri thức đã kiểm chứng
+- Quy trình đã xác nhận
+- Kiến trúc đã xác nhận
+
+---
+
+## Bước 4
+
+WM_04_1_LONG
+
+Chỉ đọc khi cần.
+
+Mục tiêu:
+
+Khôi phục:
+
+- Dự án
+- Backlog
+- Công việc dài hạn
+
+---
+
+## Bước 5
+
+LM_04_CURRENT
+
+Chỉ đọc khi cần.
+
+Mục tiêu:
+
+Khôi phục:
+
+- Lịch sử học tập gần đây
+- Kết quả kiểm chứng gần đây
+
+---
+
+## Bước 6
+
+ARCHIVE
+
+Chỉ đọc khi:
+
+- Người dùng yêu cầu
+- Thiếu dữ liệu xử lý
+- Cần tra cứu lịch sử
+
+---
+
 # KHÔI PHỤC GPT MỚI
 
 Khi tạo GPT mới:
 
-Bắt buộc có:
+Bắt buộc:
 
-- RULE_COMMON
 - RULE_<GPT>
 - WM_03A_<GPT>
 
@@ -94,46 +201,9 @@ Khuyến nghị:
 4. RULE_<GPT>
 5. WM_03A_<GPT>
 
-Sau đó mới đọc:
+GPT phải có khả năng hoạt động sau bước 5.
 
-6. WM_04_1_<GPT>_DAILY
-7. LM_03B_<GPT>_CURRENT
-
-GPT phải có khả năng hoạt động ngay sau bước 5.
-
----
-
-# KHÔI PHỤC MEMORY
-
-## Working Memory
-
-Ưu tiên:
-
-WM_03A
-
-↓
-
-WM_04_1_DAILY
-
-↓
-
-WM_04_1_LONG
-
----
-
-## Long-term Memory
-
-Ưu tiên:
-
-LM_03B_CURRENT
-
-↓
-
-LM_04_CURRENT
-
-↓
-
-ARCHIVE
+Các memory khác được nạp theo nhu cầu.
 
 ---
 
@@ -141,34 +211,22 @@ ARCHIVE
 
 Kiểm tra:
 
-- Schema
 - Authentication
 - getContent
 - createOrUpdateFile
+- Repository Access
+
+---
 
 Nếu Action lỗi:
 
 GPT được phép sử dụng Knowledge Upload tạm thời.
 
-Nhưng phải báo rõ:
+Nhưng phải thông báo rõ:
 
-"GitHub không khả dụng. Đang dùng dữ liệu dự phòng."
+"GitHub không khả dụng. Đang sử dụng dữ liệu dự phòng."
 
----
-
-# QUY TẮC KHÔI PHỤC
-
-Không khôi phục toàn bộ archive.
-
-Không đọc toàn bộ lịch sử.
-
-Không nạp toàn bộ memory.
-
-Ưu tiên:
-
-- Memory cần cho vận hành hiện tại
-- Memory mới nhất
-- Memory đã kiểm chứng
+Knowledge Upload không phải nguồn chân lý.
 
 ---
 
@@ -177,6 +235,7 @@ Không nạp toàn bộ memory.
 Một GPT được xem là khôi phục thành công khi:
 
 - Đọc được MEMORY_INDEX
+- Đọc được MEMORY_ARCHITECTURE
 - Đọc được RULE_COMMON
 - Đọc được RULE_<GPT>
 - Đọc được WM_03A_<GPT>
