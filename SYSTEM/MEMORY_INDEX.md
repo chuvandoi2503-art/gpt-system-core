@@ -1,16 +1,16 @@
 # MEMORY_INDEX
 
-Phiên bản: 03.001
+Phiên bản: 03.002
 
 ---
 
 # MỤC ĐÍCH
 
-Memory Index là điểm vào duy nhất của hệ thống memory.
+Memory Index là điểm vào duy nhất của hệ thống memory core.
 
-GPT phải đọc file này trước khi truy cập memory.
+GPT phải đọc file này trước khi truy cập tài liệu core.
 
-Memory Index là nơi định vị:
+Memory Index dùng để định vị:
 
 - Core System
 - Rules
@@ -19,7 +19,37 @@ Memory Index là nơi định vị:
 
 ---
 
-# CORE SYSTEM
+# NGUYÊN TẮC NẠP CORE
+
+Core Repository không được nạp toàn bộ đầu phiên.
+
+Mặc định chỉ nạp:
+
+- RULE_COMMON
+
+Các file core khác chỉ đọc khi cần.
+
+---
+
+# AUTO_LOAD
+
+## RULE_COMMON
+
+Path:
+
+RULES/RULE_COMMON.md
+
+Mô tả:
+
+Quy tắc vận hành chung cho toàn hệ GPT.
+
+Lý do nạp mặc định:
+
+Đây là luật vận hành chung tối thiểu của toàn hệ.
+
+---
+
+# LOAD_ON_DEMAND
 
 ## MEMORY_ARCHITECTURE
 
@@ -93,20 +123,6 @@ Khôi phục GPT và Memory.
 
 ---
 
-# RULES
-
-## RULE_COMMON
-
-Path:
-
-RULES/RULE_COMMON.md
-
-Mô tả:
-
-Quy tắc vận hành chung cho toàn hệ GPT.
-
----
-
 # KNOWLEDGE
 
 ## KN_00
@@ -119,6 +135,10 @@ Mô tả:
 
 Hiến pháp toàn hệ GPT.
 
+Trạng thái:
+
+LOAD_ON_DEMAND
+
 ---
 
 ## KN_01
@@ -130,6 +150,10 @@ KNOWLEDGE/KN_01 - HỆ ĐIỀU HÀNH HỌC TẬP VÀ HỖ TRỢ GPT.md
 Mô tả:
 
 Hệ điều hành học tập chung.
+
+Trạng thái:
+
+LOAD_ON_DEMAND
 
 ---
 
@@ -146,61 +170,14 @@ memory/
 
 ---
 
-## WM_03A
-
-Bộ nhớ lõi GPT.
-
-Ví dụ:
-
-WM_03A_ARCH - BỘ NHỚ LÕI GPT KIẾN TRÚC SƯ.md
-
-WM_03A_CONTENT - BỘ NHỚ LÕI GPT CONTENT OS.md
-
----
-
-## WM_04_1
-
-Việc đang dở.
-
-Bao gồm:
-
-WM_04_1_<GPT>_DAILY - VIỆC ĐANG DỞ HÔM NAY GPT <GPT>.md
-
-WM_04_1_<GPT>_LONG - VIỆC ĐANG DỞ DÀI HẠN GPT <GPT>.md
-
----
-
-## LM_03B
-
-Tri thức đã kiểm chứng.
-
-Bao gồm:
-
-LM_03B_<GPT>_CURRENT - TRI THỨC ĐÃ KIỂM CHỨNG GPT <GPT>.md
-
-LM_03B_<GPT>_ARCHIVE_001 - TRI THỨC LƯU TRỮ GPT <GPT>.md
-
-LM_03B_<GPT>_ARCHIVE_002 - TRI THỨC LƯU TRỮ GPT <GPT>.md
-
----
-
-## LM_04
-
-Nhật ký học tập.
-
-Bao gồm:
-
-LM_04_<GPT>_CURRENT - NHẬT KÝ HỌC TẬP GPT <GPT>.md
-
-LM_04_<GPT>_ARCHIVE_YYYY_MM - NHẬT KÝ LƯU TRỮ GPT <GPT>.md
-
----
-
 # KHỞI TẠO PHIÊN CHUẨN
 
-Mặc định nạp:
+Core mặc định nạp:
 
 - RULE_COMMON
+
+Runtime mặc định nạp:
+
 - RULE_<GPT>
 - WM_03A_<GPT>
 - WM_04_1_<GPT>_DAILY
@@ -208,6 +185,14 @@ Mặc định nạp:
 
 Không nạp mặc định:
 
+- MEMORY_ARCHITECTURE
+- PATCH_STANDARD
+- GITHUB_WRITE_POLICY
+- GITHUB_ACTION_SETUP
+- NAMING_CONVENTION
+- RESTORE_GUIDE
+- KN_00
+- KN_01
 - WM_04_1_<GPT>_LONG
 - LM_03B_<GPT>_ARCHIVE
 - LM_04_<GPT>_CURRENT
@@ -218,3 +203,4 @@ Chỉ đọc khi:
 - Người dùng yêu cầu
 - Thiếu dữ liệu xử lý
 - Cần tra cứu lịch sử
+- Cần QC kiến trúc tương ứng
