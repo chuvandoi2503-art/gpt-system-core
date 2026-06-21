@@ -1,445 +1,257 @@
 # NAMING_CONVENTION
 
-Phiên bản: 01.000
-
-Trạng thái: Áp dụng toàn hệ
+Phiên bản: 03.000
 
 ---
 
-# 1. MỤC ĐÍCH
+# MỤC TIÊU
 
-File này quy định chuẩn đặt tên dùng chung cho toàn bộ hệ GPT.
+Tên file phải:
 
-Mục tiêu:
-
-* Dễ đọc.
-* Dễ tìm.
-* Dễ nhân bản.
-* Dễ mở rộng.
-* Dễ viết automation.
-* Dễ bảo trì.
+* Dễ hiểu
+* Dễ tìm kiếm
+* Dễ nhân bản
+* Dễ đọc bởi GPT
+* Dễ đọc bởi con người
+* Không phụ thuộc vào trí nhớ hội thoại
 
 ---
 
-# 2. NGUYÊN TẮC CHUNG
+# NGUYÊN TẮC CHUNG
 
-Tên phải:
+Mọi file memory phải có:
 
-* Ngắn.
-* Rõ nghĩa.
-* Nhất quán.
-* Dễ đoán.
-
----
-
-Không dùng:
-
-* Tên ngẫu nhiên.
-* Tên cảm tính.
-* Tên không có quy luật.
-
----
-
-# 3. QUY TẮC THƯ MỤC
-
-Chuẩn:
-
-```text
-knowledge/
-rules/
-memory/
-SYSTEM/
 ```
-
----
-
-Không dùng:
-
-```text
-KNOWLEDGE/
-Rule/
-Memory/
-SystemFolder/
+ID
++
+Tên tiếng Việt
 ```
-
----
-
-# 4. QUY TẮC KNOWLEDGE
-
-Chuẩn:
-
-```text
-KN_<SO>_<TEN>
-```
-
----
 
 Ví dụ:
 
-```text
-KN_00
-KN_01
-KN_02_ARCH
-KN_02_CONTENT
-KN_02_CRM
+```
+WM_03A_ARCH - BỘ NHỚ LÕI GPT KIẾN TRÚC SƯ.md
+
+WM_04_1_ARCH_DAILY - VIỆC ĐANG DỞ HÔM NAY GPT KIẾN TRÚC SƯ.md
+
+LM_03B_ARCH_CURRENT - TRI THỨC ĐÃ KIỂM CHỨNG GPT KIẾN TRÚC SƯ.md
 ```
 
 ---
 
-Ý nghĩa:
+# QUY TẮC ID
 
+Không thay đổi ID.
+
+ID là định danh hệ thống.
+
+Ví dụ:
+
+```
+WM_03A
+WM_04_1
+LM_03B
+LM_04
+RULE
 KN
-
-=
-
-Knowledge
-
----
-
-# 5. QUY TẮC RULE
-
-Chuẩn:
-
-```text
-RULE_<TEN>
 ```
 
 ---
+
+# QUY TẮC TÊN TIẾNG VIỆT
+
+Luôn giữ:
+
+```
+ID + TÊN TIẾNG VIỆT
+```
+
+Không dùng:
+
+```
+wm03a.md
+memory1.md
+rule_new.md
+```
+
+---
+
+# QUY TẮC WORKING MEMORY
+
+## WM_03A
+
+Mẫu:
+
+```
+WM_03A_<GPT> - BỘ NHỚ LÕI GPT <TÊN GPT>.md
+```
 
 Ví dụ:
 
-```text
-RULE_COMMON
+```
+WM_03A_ARCH - BỘ NHỚ LÕI GPT KIẾN TRÚC SƯ.md
 
-RULE_ARCH
-
-RULE_CONTENT
-
-RULE_CRM
+WM_03A_CONTENT - BỘ NHỚ LÕI GPT CONTENT OS.md
 ```
 
 ---
 
-# 6. QUY TẮC WORKING MEMORY
+## WM_04_1_DAILY
 
-Chuẩn:
+Mẫu:
 
-```text
-WM_<MA>_<TEN>
 ```
-
----
+WM_04_1_<GPT>_DAILY - VIỆC ĐANG DỞ HÔM NAY GPT <TÊN GPT>.md
+```
 
 Ví dụ:
 
-```text
-WM_03A_ARCH
-
-WM_04_1_ARCH
-
-WM_03A_CONTENT
-
-WM_04_1_CONTENT
+```
+WM_04_1_ARCH_DAILY - VIỆC ĐANG DỞ HÔM NAY GPT KIẾN TRÚC SƯ.md
 ```
 
 ---
 
-# 7. QUY TẮC LONG-TERM MEMORY
+## WM_04_1_LONG
 
-Chuẩn:
+Mẫu:
 
-```text
-LM_<MA>_<TEN>
 ```
-
----
+WM_04_1_<GPT>_LONG - VIỆC ĐANG DỞ DÀI HẠN GPT <TÊN GPT>.md
+```
 
 Ví dụ:
 
-```text
-LM_03B_ARCH
-
-LM_04_ARCH
-
-LM_03B_CONTENT
-
-LM_04_CONTENT
+```
+WM_04_1_CONTENT_LONG - VIỆC ĐANG DỞ DÀI HẠN GPT CONTENT OS.md
 ```
 
 ---
 
-# 8. QUY TẮC TÊN FILE MEMORY
+# QUY TẮC LONG TERM MEMORY
 
-Cấu trúc chuẩn:
+## LM_03B_CURRENT
 
-```text
-<ID> - <TEN VIET HOA>.md
+Mẫu:
+
+```
+LM_03B_<GPT>_CURRENT - TRI THỨC ĐÃ KIỂM CHỨNG GPT <TÊN GPT>.md
 ```
 
 ---
+
+## LM_03B_ARCHIVE
+
+Mẫu:
+
+```
+LM_03B_<GPT>_ARCHIVE_001 - TRI THỨC LƯU TRỮ GPT <TÊN GPT>.md
+```
 
 Ví dụ:
 
-```text
-WM_03A_CONTENT - BO NHO LOI GPT CONTENT OS.md
-
-WM_04_1_CONTENT - TRANG THAI CONG VIEC DANG DO GPT CONTENT OS.md
-
-LM_03B_CONTENT - BO NHO DAI HAN GPT CONTENT OS.md
+```
+LM_03B_ARCH_ARCHIVE_001 - TRI THỨC LƯU TRỮ GPT KIẾN TRÚC SƯ.md
 ```
 
 ---
 
-Mục tiêu:
+## LM_04_CURRENT
 
-ID phục vụ GPT.
+Mẫu:
 
-Tên Việt hóa phục vụ con người.
+```
+LM_04_<GPT>_CURRENT - NHẬT KÝ HỌC TẬP GPT <TÊN GPT>.md
+```
 
 ---
 
-# 9. QUY TẮC TÊN FILE SYSTEM
+## LM_04_ARCHIVE
+
+Mẫu:
+
+```
+LM_04_<GPT>_ARCHIVE_YYYY_MM - NHẬT KÝ LƯU TRỮ GPT <TÊN GPT>.md
+```
 
 Ví dụ:
 
-```text
+```
+LM_04_CONTENT_ARCHIVE_2026_06 - NHẬT KÝ LƯU TRỮ GPT CONTENT OS.md
+```
+
+---
+
+# QUY TẮC KNOWLEDGE
+
+Mẫu:
+
+```
+KN_00 - HIẾN PHÁP GPT.md
+
+KN_01 - HỆ ĐIỀU HÀNH HỌC TẬP VÀ HỖ TRỢ GPT.md
+
+KN_02_<GPT> - HỒ SƠ LĨNH VỰC GPT <TÊN GPT>.md
+```
+
+---
+
+# QUY TẮC RULE
+
+Mẫu:
+
+```
+RULE_COMMON.md
+
+RULE_ARCH.md
+
+RULE_CONTENT.md
+```
+
+---
+
+# QUY TẮC SYSTEM
+
+Mẫu:
+
+```
 MEMORY_INDEX.md
 
 MEMORY_ARCHITECTURE.md
-
-NAMING_CONVENTION.md
 
 PATCH_STANDARD.md
 
 GITHUB_WRITE_POLICY.md
 
-RESTORE_GUIDE.md
-
-OPENAPI_SCHEMA.md
+NAMING_CONVENTION.md
 ```
 
 ---
 
-Tên file System:
+# QUY TẮC NHÂN BẢN GPT
 
-* Không dấu.
-* Viết hoa.
-* Dùng dấu gạch dưới.
+Khi tạo GPT mới:
 
----
+Không đổi kiến trúc.
 
-# 10. QUY TẮC REPOSITORY
+Chỉ thay:
 
-Chuẩn:
-
-```text
-gpt-<ten-he>-system
 ```
-
----
-
-Ví dụ:
-
-```text
-gpt-architect-system
-
-gpt-content-director-system
-
-gpt-system-core
-
-gpt-crm-system
-```
-
----
-
-# 11. QUY TẮC MÃ GPT
-
-Ví dụ:
-
-```text
 ARCH
-
+↓
 CONTENT
 
+ARCH
+↓
 CRM
 
+ARCH
+↓
 SALES
 
-AUTO
-
-KNOWLEDGE
-```
-
----
-
-Mỗi GPT chỉ có một mã chính thức.
-
----
-
-Không đổi mã giữa chừng.
-
----
-
-# 12. QUY TẮC PATCH
-
-Chuẩn:
-
-```text
-UPDATE_<MUC>
-```
-
----
-
-Ví dụ:
-
-```text
-UPDATE_03A
-
-UPDATE_03B
-
-UPDATE_04_1
-
-UPDATE_04_ARCHIVE
-```
-
----
-
-Không dùng:
-
-```text
-UPDATE_FILE
-
-FIX_FILE
-
-SAVE_FILE
-```
-
----
-
-# 13. QUY TẮC COMMIT
-
-Ví dụ:
-
-```text
-TEST_CREATE_FILE
-
-UPDATE_WM
-
-UPDATE_LM
-
-UPDATE_RULE
-
-UPDATE_KN
-```
-
----
-
-Commit phải phản ánh mục đích.
-
----
-
-# 14. QUY TẮC TÊN KÊNH NỘI DUNG
-
-Tên hiển thị:
-
-Được phép có dấu.
-
-Ví dụ:
-
-```text
-Bồ Đề Việt
-
-Đợi Bồ Đề
-
-Nghề Lá Của Đợi
-
-Nhà Có Maybach
-
-Không Phải Maybach Đâu
-
-Đợi Làm Bố
-```
-
----
-
-Mã nội bộ:
-
-```text
-BDV
-
-DBD
-
-NLCD
-
-MAYBACH
-
-KPMBD
-
-DLB
-```
-
----
-
-# 15. QUY TẮC TÊN ASSET
-
-Chuẩn:
-
-```text
-YYYY-MM-DD_NHOM_TUKHOA1_TUKHOA2_TUKHOA3
-```
-
----
-
-Ví dụ:
-
-```text
-2026-06-20_BDV_HaiLa_GhepLa_DongGoi.mp4
-
-2026-06-20_DLB_GheTreEm_KhongHopTac.mp4
-
-2026-06-20_KPMBD_KhongPhaiMaybachDau.mp4
-```
-
----
-
-Không dùng ID riêng cho asset ở V1.
-
----
-
-# 16. QUY TẮC MEMORY_INDEX
-
-Memory Index là nguồn ánh xạ chính thức.
-
-Ví dụ:
-
-```text
-WM_03A_CONTENT
-
+ARCH
 ↓
-
-memory/WM_03A_CONTENT - BO NHO LOI GPT CONTENT OS.md
+AUTOMATION
 ```
 
----
-
-GPT không được tự suy đoán path.
-
-GPT phải ưu tiên đọc MEMORY_INDEX.
-
----
-
-# 17. QUY TẮC CUỐI CÙNG
-
-Nếu có xung đột giữa:
-
-Tên đẹp
-
-và
-
-Tên nhất quán
-
-Ưu tiên:
-
-Tên nhất quán.
-
-Vì hệ thống sẽ tồn tại lâu hơn cảm xúc đặt tên tại một thời điểm.
+Toàn bộ cấu trúc memory phải giữ nguyên.
