@@ -1,6 +1,6 @@
 # PATCH_STANDARD
 
-Phiên bản: 03.000
+Phiên bản: 03.001
 
 ---
 
@@ -8,18 +8,22 @@ Phiên bản: 03.000
 
 PATCH là cơ chế trung gian giữa:
 
-```
 Hội thoại
+
 ↓
+
 Memory
-```
+
+↓
+
+GitHub
 
 PATCH giúp:
 
-* Kiểm tra trước khi ghi
-* Giảm ghi nhầm
-* Giảm mất dữ liệu
-* Giữ người dùng là người quyết định cuối cùng
+- Kiểm tra trước khi ghi
+- Giảm ghi nhầm
+- Giảm mất dữ liệu
+- Giữ người dùng là người quyết định cuối cùng
 
 ---
 
@@ -27,49 +31,61 @@ PATCH giúp:
 
 PATCH không phải bộ nhớ.
 
+PATCH không phải nguồn chân lý.
+
 PATCH không được lưu tồn đọng.
 
 PATCH chỉ tồn tại trong phiên hiện tại.
 
-Sau khi được duyệt:
+Sau khi được xác nhận:
 
-```
 PATCH
-↓
-Ghi vào file đích
-↓
-Kết thúc
-```
 
-Không tạo backlog PATCH.
+↓
+
+Ghi GitHub
+
+↓
+
+Hoàn tất
 
 Không tạo thư mục PATCH.
 
-Không lưu PATCH để tổng hợp sau.
+Không tạo lịch sử PATCH.
+
+Không tạo PATCH Archive.
 
 ---
 
 # QUY TRÌNH KẾT THÚC PHIÊN
 
-Người dùng nói:
+Khi người dùng yêu cầu:
 
-```
 Kết thúc phiên
-```
 
 GPT phải:
 
-```
 Rà soát phiên
+
 ↓
+
 Tạo PATCH
+
 ↓
-Chờ duyệt
+
+Phân loại PATCH
+
 ↓
+
+Chờ xác nhận
+
+↓
+
 Ghi GitHub
+
 ↓
+
 Hoàn tất
-```
 
 ---
 
@@ -79,10 +95,15 @@ Hoàn tất
 
 Sử dụng khi:
 
-* Vai trò GPT thay đổi
-* Quy trình thay đổi
-* Nguyên tắc thay đổi
-* Cấu hình hệ thống thay đổi
+- Vai trò GPT thay đổi
+- Mục tiêu thay đổi
+- Quy trình thay đổi
+- Kiến trúc thay đổi
+- Cấu hình hệ thống thay đổi
+
+Ghi vào:
+
+WM_03A
 
 ---
 
@@ -90,15 +111,13 @@ Sử dụng khi:
 
 Sử dụng khi:
 
-* Việc đang dở trong ngày thay đổi
+- Việc đang dở hôm nay thay đổi
 
 Ghi vào:
 
-```
-WM_04_1_DAILY.md
-```
+memory/WM_04_1/
 
-File này được phép ghi đè.
+WM_04_1_<GPT>_DAILY
 
 ---
 
@@ -106,15 +125,17 @@ File này được phép ghi đè.
 
 Sử dụng khi:
 
-* Xuất hiện việc dài hạn mới
-* Tiến độ việc dài hạn thay đổi
-* Hoàn thành việc dài hạn
+- Xuất hiện dự án mới
+- Xuất hiện backlog mới
+- Tiến độ dự án thay đổi
+- Công việc dài hạn thay đổi
+- Công việc dài hạn hoàn thành
 
 Ghi vào:
 
-```
-WM_04_1_LONG.md
-```
+memory/WM_04_1/
+
+WM_04_1_<GPT>_LONG
 
 ---
 
@@ -122,20 +143,26 @@ WM_04_1_LONG.md
 
 Sử dụng khi:
 
-Xuất hiện tri thức mới đã được kiểm chứng.
+Xuất hiện tri thức đã kiểm chứng.
 
 Ví dụ:
 
-* Quy tắc mới
-* Kiến trúc mới
-* Workflow mới
-* Bài học đã xác nhận
+- Kiến trúc mới
+- Quy trình mới
+- Workflow mới
+- Bài học đã xác nhận
 
 Không lưu:
 
-* Giả thuyết
-* Suy đoán
-* Ý tưởng chưa kiểm chứng
+- Ý tưởng
+- Giả thuyết
+- Suy đoán
+
+Ghi vào:
+
+memory/LM_03B/
+
+LM_03B_<GPT>_CURRENT
 
 ---
 
@@ -147,9 +174,16 @@ Cần lưu lịch sử học tập.
 
 Ví dụ:
 
-* Bài học triển khai
-* Lỗi gặp phải
-* Kết quả kiểm chứng
+- Kết quả kiểm chứng
+- Lỗi phát hiện
+- Bài học vận hành
+- Kinh nghiệm triển khai
+
+Ghi vào:
+
+memory/LM_04/
+
+LM_04_<GPT>_CURRENT
 
 ---
 
@@ -159,43 +193,52 @@ Thông tin không lưu.
 
 Ví dụ:
 
-* Trao đổi tạm thời
-* Ý tưởng bị loại
-* Thảo luận không còn giá trị
+- Trao đổi tạm thời
+- Ý tưởng bị loại
+- Thảo luận không còn giá trị
+- Nội dung không cần cho vận hành tương lai
 
 ---
 
-# QUY TẮC GHI GITHUB
+# QUY TẮC GHI FILE ĐÃ TỒN TẠI
 
-Nếu file đã tồn tại:
+Bắt buộc:
 
-GPT phải:
-
-```
 Đọc file
+
 ↓
+
 Lấy SHA
+
 ↓
+
 Tạo PATCH
+
 ↓
+
 Chờ xác nhận
+
 ↓
+
 Ghi GitHub
-```
 
 ---
 
-Nếu file chưa tồn tại:
+# QUY TẮC TẠO FILE MỚI
 
-GPT phải:
+Bắt buộc:
 
-```
 Tạo PATCH
+
 ↓
+
 Chờ xác nhận
+
 ↓
+
 Tạo file mới
-```
+
+Không được tự tạo file memory khi chưa có xác nhận.
 
 ---
 
@@ -207,33 +250,84 @@ PATCH không phải nguồn chân lý.
 
 Nguồn chân lý là:
 
-```
 GitHub Repository
-```
 
 Khi cần tổng hợp:
 
-GPT đọc trực tiếp:
+GPT phải đọc trực tiếp từ GitHub.
 
-```
-WM_03A
-WM_04_1
-LM_03B
-LM_04
-```
+---
 
-từ GitHub.
+# QUY TẮC CHUYỂN MEMORY
+
+## WM_04_1_DAILY
+
+Nếu việc kéo dài nhiều ngày:
+
+WM_04_1_DAILY
+
+↓
+
+WM_04_1_LONG
+
+---
+
+## WM_04_1_LONG
+
+Khi hoàn thành:
+
+WM_04_1_LONG
+
+↓
+
+LM_04_CURRENT
+
+hoặc
+
+↓
+
+LM_03B_CURRENT
+
+---
+
+## LM_03B_CURRENT
+
+Khi quá lớn:
+
+LM_03B_CURRENT
+
+↓
+
+Tổng hợp
+
+↓
+
+LM_03B_ARCHIVE
+
+---
+
+## LM_04_CURRENT
+
+Khi quá lớn hoặc hết tháng:
+
+LM_04_CURRENT
+
+↓
+
+LM_04_ARCHIVE_YYYY_MM
 
 ---
 
 # QUY TẮC HOÀN TẤT
 
-Sau khi PATCH được ghi vào file đích:
+Sau khi PATCH được ghi thành công:
 
-PATCH được xem là hoàn thành.
+PATCH được xem là hoàn tất.
 
-Không tiếp tục lưu PATCH ở nơi khác.
+Không lưu PATCH.
 
 Không tạo lịch sử PATCH.
 
 Không tạo archive PATCH.
+
+GitHub là nguồn chân lý duy nhất.
