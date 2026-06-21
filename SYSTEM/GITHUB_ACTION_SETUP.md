@@ -42,7 +42,7 @@ Dữ liệu phải nằm trên GitHub.
 
 # 3. KIẾN TRÚC CHUẨN
 
-```text id="p8gq7k"
+```
 GPT
 ↓
 GitHub Action
@@ -54,7 +54,7 @@ GitHub Repository
 
 Ví dụ:
 
-```text id="wtkn2f"
+```
 GPT Content OS
 ↓
 GitHub Action
@@ -66,7 +66,7 @@ gpt-content-director-system
 
 Ví dụ:
 
-```text id="1lg4w7"
+```
 GPT Kiến Trúc Sư
 ↓
 GitHub Action
@@ -88,7 +88,7 @@ Ví dụ:
 
 Token có quyền:
 
-```text id="e7zxtg"
+```
 gpt-system-core
 
 gpt-architect-system
@@ -108,7 +108,7 @@ Mục tiêu:
 
 Bắt buộc:
 
-```text id="09l12n"
+```
 Contents
 =
 Read & Write
@@ -118,7 +118,7 @@ Read & Write
 
 Bắt buộc:
 
-```text id="q6v6ei"
+```
 Metadata
 =
 Read
@@ -128,7 +128,7 @@ Read
 
 Không cần:
 
-```text id="qmb4gg"
+```
 Administration
 
 Actions
@@ -150,7 +150,7 @@ Selected repositories
 
 Ví dụ:
 
-```text id="cl4o74"
+```
 gpt-system-core
 
 gpt-architect-system
@@ -170,7 +170,7 @@ All repositories
 
 Action chuẩn toàn hệ:
 
-```text id="87k0x5"
+```
 getContent
 ```
 
@@ -184,7 +184,7 @@ Mục đích:
 
 Action chuẩn:
 
-```text id="4yzfho"
+```
 createOrUpdateFile
 ```
 
@@ -202,7 +202,7 @@ Cập nhật file.
 
 Input:
 
-```text id="w9vwju"
+```
 owner
 
 repo
@@ -214,7 +214,7 @@ path
 
 Ví dụ:
 
-```text id="jlwm8e"
+```
 owner:
 chuvandoi2503-art
 
@@ -241,7 +241,7 @@ Metadata.
 
 Input:
 
-```text id="kn3x0t"
+```
 owner
 
 repo
@@ -259,7 +259,7 @@ Nếu cập nhật file cũ:
 
 Bắt buộc thêm:
 
-```text id="isjlwm"
+```
 sha
 ```
 
@@ -267,7 +267,7 @@ sha
 
 # 10. QUY TRÌNH ĐỌC FILE
 
-```text id="04fkkh"
+```
 Người dùng yêu cầu
 ↓
 Đọc MEMORY_INDEX
@@ -283,7 +283,7 @@ Suy luận
 
 # 11. QUY TRÌNH SỬA FILE
 
-```text id="8k7h9m"
+```
 Đọc file
 ↓
 Lấy SHA
@@ -303,7 +303,7 @@ Không được bỏ qua bước PATCH.
 
 # 12. QUY TRÌNH TẠO FILE
 
-```text id="b7zz15"
+```
 Tạo nội dung
 ↓
 Hiển thị cho người dùng
@@ -343,7 +343,7 @@ Bước 4
 
 Tạo:
 
-```text id="0zbrcu"
+```
 MEMORY_INDEX
 ```
 
@@ -353,7 +353,7 @@ Bước 5
 
 Tạo:
 
-```text id="3ykgw3"
+```
 Knowledge
 
 Rule
@@ -377,7 +377,7 @@ PASS.
 
 Test đọc:
 
-```text id="80kk8o"
+```
 SYSTEM/MEMORY_INDEX.md
 ```
 
@@ -391,7 +391,7 @@ PASS.
 
 Test ghi:
 
-```text id="vgpq1h"
+```
 TEST_CREATE_FILE
 ```
 
@@ -407,7 +407,7 @@ PASS.
 
 Lỗi:
 
-```text id="lcf7xe"
+```
 403
 ```
 
@@ -421,7 +421,7 @@ Token không có quyền.
 
 Kiểm tra:
 
-```text id="c7nnrz"
+```
 Contents
 
 Read & Write
@@ -431,7 +431,7 @@ Read & Write
 
 Lỗi:
 
-```text id="k3e0km"
+```
 Repository not found
 ```
 
@@ -447,7 +447,7 @@ Sai quyền.
 
 Lỗi:
 
-```text id="t9vuzm"
+```
 Resource not accessible
 ```
 
