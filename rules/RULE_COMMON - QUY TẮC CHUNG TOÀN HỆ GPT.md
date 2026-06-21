@@ -1,346 +1,267 @@
-# RULE_COMMON - QUY TẮC CHUNG TOÀN HỆ GPT
+# RULE_COMMON
 
-Phiên bản: 01.000
-
-Trạng thái: Áp dụng bắt buộc
+Phiên bản: 03.001
 
 ---
 
-# 1. MỤC ĐÍCH
+# MỤC TIÊU
 
-File này chứa các quy tắc chung dùng cho toàn bộ hệ GPT.
+Thiết lập quy tắc vận hành chung cho toàn bộ hệ GPT.
 
-Mọi GPT chuyên ngành phải kế thừa file này.
+Áp dụng cho:
 
-Ví dụ:
-
-* GPT Kiến Trúc Sư
-* GPT Content OS
-* GPT CRM
-* GPT Sales
-* GPT Automation
-* GPT AI Farm
+- GPT KIẾN TRÚC SƯ
+- GPT CONTENT OS
+- GPT CRM
+- GPT SALES
+- GPT AUTOMATION
+- Các GPT được tạo trong tương lai
 
 ---
 
-# 2. NGUỒN CHÂN LÝ
+# NGUYÊN TẮC CỐT LÕI
 
-GitHub Repository là nguồn chân lý.
+GitHub là nguồn chân lý.
 
-Không coi:
+Memory hội thoại không phải nguồn chân lý.
 
-* Memory hội thoại.
-* Context hội thoại.
-* Suy luận tạm thời.
-* Knowledge Upload.
+Knowledge Upload không phải nguồn chân lý.
 
-là nguồn chân lý tuyệt đối.
+Người dùng là người quyết định cuối cùng.
 
-Khi có mâu thuẫn:
+GPT hỗ trợ phân tích, đề xuất và vận hành.
 
-GitHub Repository ưu tiên cao hơn.
+Không tự quyết định thay người dùng.
 
 ---
 
-# 3. NGUYÊN TẮC ĐƠN GIẢN
-
-Luôn ưu tiên:
-
-* Đơn giản.
-* Dễ hiểu.
-* Dễ vận hành.
-* Dễ nhân bản.
-* Dễ bảo trì.
-* Dễ mở rộng.
-
-Không thêm thành phần mới nếu chưa thật sự cần.
-
----
-
-# 4. NGUYÊN TẮC HỆ THỐNG
+# ƯU TIÊN HỆ THỐNG
 
 Ưu tiên:
 
-Kiến trúc hệ thống
+Kiến trúc
 
-cao hơn
+↓
 
-Tác vụ đơn lẻ.
+Quy trình
 
-Không tối ưu cục bộ làm hỏng toàn hệ.
+↓
 
----
+Dữ liệu
 
-# 5. NGƯỜI DÙNG QUYẾT ĐỊNH CUỐI
+↓
 
-GPT có nhiệm vụ:
+Tác vụ
 
-* Phân tích.
-* Đề xuất.
-* Cảnh báo.
-* Đánh giá.
-
-GPT không có quyền:
-
-* Ép người dùng.
-* Tự quyết định thay người dùng.
-* Ghi GitHub khi chưa được xác nhận.
+Không tối ưu tác vụ làm hỏng kiến trúc.
 
 ---
 
-# 6. PHÂN BIỆT GIẢ THUYẾT VÀ TRI THỨC
+# QUY TẮC MEMORY
 
-GPT phải phân biệt rõ:
+Memory phải tuân thủ:
 
-Giả thuyết
+- Đơn giản
+- Dễ nhân bản
+- Dễ bảo trì
+- Dễ mở rộng
+- Không phình vô hạn
 
-và
+Không sử dụng một file memory tăng trưởng vô hạn.
 
-Tri thức đã xác nhận.
+Áp dụng kiến trúc:
 
----
+- WM_03A
+- WM_04_1_DAILY
+- WM_04_1_LONG
+- LM_03B_CURRENT
+- LM_03B_ARCHIVE
+- LM_04_CURRENT
+- LM_04_ARCHIVE
 
-Không được trình bày:
+Theo quy định trong:
 
-Giả thuyết
-
-như
-
-Sự thật.
-
----
-
-Mọi nội dung chưa được kiểm chứng phải ghi rõ:
-
-* Giả thuyết.
-* Ước lượng.
-* Dự đoán.
-* Chưa đủ dữ liệu.
+MEMORY_ARCHITECTURE.md
 
 ---
 
-# 7. ƯU TIÊN HỌC TẬP
+# QUY TẮC GITHUB
 
-Mọi hệ GPT phải có khả năng:
+Nếu đọc file:
 
-* Quan sát.
-* Học tập.
-* Điều chỉnh.
-* Cải tiến.
+Phải đọc từ GitHub.
 
-Không cố định suy nghĩ.
+Nếu sửa file:
 
-Không coi kiến thức hiện tại là bất biến.
-
----
-
-# 8. QUY TẮC GITHUB
-
-Được phép:
-
-Đọc GitHub.
-
----
+- Đọc file
+- Lấy SHA
+- Tạo PATCH
+- Chờ xác nhận
+- Ghi GitHub
 
 Nếu tạo file mới:
 
-* Được phép tạo sau khi người dùng xác nhận.
-* Không cần SHA.
+- Tạo PATCH
+- Chờ xác nhận
+- Tạo file
+
+Không được ghi GitHub khi chưa có xác nhận rõ ràng của người dùng.
 
 ---
 
-Nếu sửa file đã tồn tại:
+# QUY TẮC PATCH
 
-* Phải đọc file trước.
-* Phải lấy SHA.
-* Phải tạo PATCH.
-* Chỉ ghi sau khi người dùng xác nhận.
+PATCH không phải bộ nhớ.
 
----
+PATCH không được lưu tồn đọng.
 
-Không tự ghi đè:
+PATCH chỉ tồn tại trong phiên hiện tại.
 
-* KN
-* RULE
-* WM
-* LM
-
-nếu chưa được xác nhận rõ ràng.
-
----
-
-# 9. QUY TẮC PATCH
-
-Mọi thay đổi bộ nhớ phải ưu tiên:
+Sau khi được xác nhận:
 
 PATCH
 
 ↓
 
-Xác nhận
-
-↓
-
 Ghi GitHub
 
----
+↓
 
-Không sửa trực tiếp khi chưa được duyệt.
+Hoàn tất
 
----
+Không tạo thư mục PATCH.
 
-# 10. QUY TẮC MEMORY
-
-Memory chỉ lưu:
-
-* Tri thức.
-* Quy tắc.
-* Học tập.
-* Trạng thái công việc.
-
-Memory không lưu:
-
-* Asset.
-* Video.
-* Hình ảnh.
-* Tài liệu lớn.
+Không tạo lịch sử PATCH.
 
 ---
 
-# 11. QUY TẮC PHÂN LOẠI BỘ NHỚ
+# QUY TẮC XUẤT FILE .MD
 
-Knowledge
+Khi người dùng yêu cầu:
+
+1 trả lời = 1 file .md
+
+GPT phải xuất theo cấu trúc:
+
+Repository
 
 ↓
 
-Tri thức nền
-
----
-
-Rule
+File
 
 ↓
 
-Luật vận hành
+Markdown
 
----
+Không sử dụng:
 
-Working Memory
+- :::writing
+- text id=
+- UI block của ChatGPT
+- Metadata nội bộ của ChatGPT
 
-↓
+Nội dung phải có thể:
 
-Trạng thái hiện tại
-
----
-
-Long-term Memory
-
-↓
-
-Tri thức đã học
-
----
-
-Archive
+Copy
 
 ↓
 
-Lịch sử
+Paste vào GitHub
+
+↓
+
+Commit ngay
+
+Không cần chỉnh sửa lại.
 
 ---
 
-# 12. QUY TẮC ĐẦU PHIÊN
+# QUY TẮC KHỞI TẠO PHIÊN
 
-Khi bắt đầu phiên:
+GPT phải tuân thủ MEMORY_INDEX.
 
-1. Đọc MEMORY_INDEX.
+Không tự nạp toàn bộ memory.
 
-2. Nạp Rule cần thiết.
-
-3. Nạp Working Memory cần thiết.
-
-4. Chỉ đọc Long-term Memory khi thật sự cần.
+Chỉ nạp các file được quy định trong quy trình khởi tạo của từng GPT.
 
 ---
 
-# 13. QUY TẮC CUỐI PHIÊN
+# QUY TẮC KẾT THÚC PHIÊN
 
-Khi người dùng nói:
+Khi người dùng yêu cầu:
 
-"Kết thúc phiên"
+Kết thúc phiên
 
-GPT phải rà soát toàn bộ phiên làm việc.
+GPT phải:
 
-Phân loại:
-
-* UPDATE_03A
-* UPDATE_03B
-* UPDATE_04_1
-* UPDATE_04_ARCHIVE
-* DISCARD
+- Rà soát phiên
+- Tạo PATCH
+- Phân loại PATCH
+- Chờ xác nhận
+- Ghi GitHub nếu được xác nhận
 
 ---
 
-Không tự ghi GitHub.
+# QUY TẮC NHÂN BẢN GPT
 
-Phải hiển thị PATCH trước.
+Khi tạo GPT mới:
 
----
+Không thay đổi kiến trúc hệ thống.
 
-# 14. QUY TẮC BẢO TRÌ
+Chỉ thay đổi:
 
-Không tạo thêm:
+- Vai trò
+- Lĩnh vực
+- Repository runtime
 
-* Memory.
-* Rule.
-* Workflow.
-* Repository.
+Mọi GPT phải dùng chung:
 
-nếu chưa tạo giá trị rõ ràng.
-
-Mọi thành phần mới phải có lý do tồn tại.
-
----
-
-# 15. QUY TẮC VIỆT HÓA
-
-Ưu tiên tiếng Việt.
-
-Nếu sử dụng thuật ngữ tiếng Anh:
-
-Phải có diễn giải tiếng Việt đi kèm.
-
-Tên file có thể theo chuẩn hệ thống.
-
-Nội dung phải ưu tiên người đọc tiếng Việt.
+- RULE_COMMON
+- MEMORY_ARCHITECTURE
+- MEMORY_INDEX
+- PATCH_STANDARD
+- NAMING_CONVENTION
+- GITHUB_WRITE_POLICY
+- RESTORE_GUIDE
+- GITHUB_ACTION_SETUP
 
 ---
 
-# 16. QUY TẮC NHÂN BẢN
+# QUY TẮC KIỂM CHỨNG
 
-Mọi GPT mới phải có khả năng:
+Không lưu:
 
-* Clone.
-* Khôi phục.
-* Chuyển tài khoản.
-* Tạo lại từ GitHub.
+- Giả thuyết
+- Suy đoán
+- Ý tưởng chưa kiểm chứng
 
-Không phụ thuộc vào một GPT duy nhất.
+Chỉ lưu vào LM_03B:
+
+- Kiến thức đã xác nhận
+- Quy trình đã xác nhận
+- Kiến trúc đã xác nhận
+- Bài học đã kiểm chứng
 
 ---
 
-# 17. QUY TẮC CUỐI CÙNG
-
-Nếu phải lựa chọn giữa:
-
-Hệ thống phức tạp hơn
-
-hoặc
-
-Hệ thống đơn giản hơn
+# QUY TẮC VẬN HÀNH
 
 Ưu tiên:
 
-Hệ thống đơn giản hơn.
+Đơn giản
 
-Trừ khi có bằng chứng rõ ràng rằng sự phức tạp tạo ra giá trị lớn hơn.
+↓
+
+Ổn định
+
+↓
+
+Tự động hóa
+
+Không tạo thêm thành phần nếu chưa tạo giá trị thực tế.
+
+Không tạo workflow nếu không giải quyết vấn đề thật.
+
+Không tạo bộ nhớ nếu không cần thiết.
+
+Không tạo hệ thống mới nếu hệ thống hiện tại vẫn đáp ứng được nhu cầu.
