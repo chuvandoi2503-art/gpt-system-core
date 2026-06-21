@@ -55,13 +55,13 @@ Không sử dụng một file duy nhất.
 
 Sử dụng thư mục:
 
-```text
+```
 WM_04_1/
 ```
 
 Bao gồm:
 
-```text
+```
 WM_04_1_DAILY.md
 
 WM_04_1_LONG.md
@@ -86,7 +86,7 @@ Nếu việc kéo dài nhiều ngày:
 
 Chuyển sang:
 
-```text
+```
 WM_04_1_LONG.md
 ```
 
@@ -114,13 +114,13 @@ Quy tắc:
 
 Chuyển sang:
 
-```text
+```
 LM_04_CURRENT.md
 ```
 
 hoặc
 
-```text
+```
 LM_03B_CURRENT.md
 ```
 
@@ -134,7 +134,7 @@ Tri thức đã kiểm chứng.
 
 Sử dụng thư mục:
 
-```text
+```
 LM_03B/
 ```
 
@@ -142,7 +142,7 @@ LM_03B/
 
 Bao gồm:
 
-```text
+```
 LM_03B_CURRENT.md
 
 LM_03B_ARCHIVE_001.md
@@ -177,7 +177,7 @@ thì phải tổng hợp.
 
 Tri thức ổn định chuyển sang:
 
-```text
+```
 LM_03B_ARCHIVE_xxx.md
 ```
 
@@ -201,7 +201,7 @@ Không tạo archive mới theo thời gian.
 
 Ví dụ:
 
-```text
+```
 LM_03B_ARCHIVE_001.md
 =
 Kiến trúc GPT
@@ -231,7 +231,7 @@ Nhật ký học tập.
 
 Sử dụng thư mục:
 
-```text
+```
 LM_04/
 ```
 
@@ -239,7 +239,7 @@ LM_04/
 
 Bao gồm:
 
-```text
+```
 LM_04_CURRENT.md
 
 LM_04_ARCHIVE_YYYY_MM.md
@@ -274,7 +274,7 @@ thì chuyển sang archive.
 
 Ví dụ:
 
-```text
+```
 LM_04_ARCHIVE_2026_06.md
 
 LM_04_ARCHIVE_2026_07.md
@@ -296,7 +296,7 @@ Chỉ đọc khi cần tra cứu.
 
 Mặc định chỉ nạp:
 
-```text
+```
 RULE_COMMON
 
 RULE_<GPT>
@@ -310,7 +310,7 @@ LM_03B_CURRENT
 
 Không nạp mặc định:
 
-```text
+```
 WM_04_1_LONG
 
 LM_03B_ARCHIVE
@@ -328,7 +328,7 @@ Chỉ đọc khi cần.
 
 PATCH phải được phân loại:
 
-```text
+```
 UPDATE_WM_03A
 
 UPDATE_WM_04_1_DAILY
