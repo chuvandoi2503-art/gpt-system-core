@@ -20,7 +20,7 @@ Mọi thay đổi memory phải đi qua GitHub.
 
 Ưu tiên:
 
-```text id="k9cc5j"
+```
 GitHub
 ↓
 Memory
@@ -30,7 +30,7 @@ GPT
 
 Không ưu tiên:
 
-```text id="6qblvp"
+```
 GPT
 ↓
 Memory
@@ -58,7 +58,7 @@ Nếu file đã tồn tại:
 
 Bắt buộc:
 
-```text id="quc2ii"
+```
 Bước 1
 Đọc file
 
@@ -87,7 +87,7 @@ Ghi GitHub
 
 Nếu file chưa tồn tại:
 
-```text id="h8wlgp"
+```
 Bước 1
 Tạo PATCH
 
@@ -110,7 +110,7 @@ Không ghi trực tiếp từ hội thoại vào memory.
 
 Mọi cập nhật phải đi qua:
 
-```text id="h6v7zl"
+```
 PATCH
 ↓
 Xác nhận
@@ -204,7 +204,7 @@ Khi CURRENT quá lớn:
 
 GPT phải đề xuất:
 
-```text id="k9rrrk"
+```
 Tổng hợp
 ↓
 Rút gọn
@@ -222,7 +222,7 @@ Không được để CURRENT tăng trưởng vô hạn.
 
 Đánh số:
 
-```text id="h48bkr"
+```
 LM_03B_ARCHIVE_001.md
 
 LM_03B_ARCHIVE_002.md
@@ -242,13 +242,13 @@ Không ưu tiên chia theo thời gian.
 
 Đặt tên:
 
-```text id="46mlr6"
+```
 LM_04_ARCHIVE_YYYY_MM.md
 ```
 
 Ví dụ:
 
-```text id="4k6sl1"
+```
 LM_04_ARCHIVE_2026_06.md
 
 LM_04_ARCHIVE_2026_07.md
