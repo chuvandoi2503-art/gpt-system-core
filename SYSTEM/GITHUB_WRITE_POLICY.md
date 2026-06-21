@@ -1,6 +1,6 @@
 # GITHUB_WRITE_POLICY
 
-Phiên bản: 03.000
+Phiên bản: 03.001
 
 ---
 
@@ -20,23 +20,27 @@ Mọi thay đổi memory phải đi qua GitHub.
 
 Ưu tiên:
 
-```
 GitHub
+
 ↓
+
 Memory
+
 ↓
+
 GPT
-```
 
 Không ưu tiên:
 
-```
 GPT
+
 ↓
+
 Memory
+
 ↓
+
 GitHub
-```
 
 ---
 
@@ -58,49 +62,37 @@ Nếu file đã tồn tại:
 
 Bắt buộc:
 
-```
-Bước 1
 Đọc file
 
 ↓
 
-Bước 2
 Lấy SHA
 
 ↓
 
-Bước 3
 Tạo PATCH
 
 ↓
 
-Bước 4
 Chờ xác nhận
 
 ↓
 
-Bước 5
 Ghi GitHub
-```
 
 ---
 
 Nếu file chưa tồn tại:
 
-```
-Bước 1
 Tạo PATCH
 
 ↓
 
-Bước 2
 Chờ xác nhận
 
 ↓
 
-Bước 3
 Tạo file mới
-```
 
 ---
 
@@ -110,13 +102,15 @@ Không ghi trực tiếp từ hội thoại vào memory.
 
 Mọi cập nhật phải đi qua:
 
-```
 PATCH
+
 ↓
+
 Xác nhận
+
 ↓
+
 GitHub
-```
 
 ---
 
@@ -124,14 +118,18 @@ GitHub
 
 ## WM_04_1_DAILY
 
-Cho phép:
+Thư mục:
 
-* Ghi đè
-* Thay thế toàn bộ nội dung
+memory/WM_04_1/
 
 Mục đích:
 
 Lưu việc đang dở trong ngày.
+
+Cho phép:
+
+- Ghi đè
+- Thay thế toàn bộ nội dung
 
 Không lưu lịch sử.
 
@@ -139,15 +137,23 @@ Không lưu lịch sử.
 
 ## WM_04_1_LONG
 
-Cho phép:
+Thư mục:
 
-* Thêm
-* Sửa
-* Xóa
+memory/WM_04_1/
 
 Mục đích:
 
-Lưu việc đang dở dài hạn.
+Lưu:
+
+- Dự án
+- Backlog
+- Công việc dài hạn
+
+Cho phép:
+
+- Thêm
+- Sửa
+- Xóa
 
 ---
 
@@ -155,44 +161,64 @@ Lưu việc đang dở dài hạn.
 
 ## LM_03B_CURRENT
 
+Thư mục:
+
+memory/LM_03B/
+
 Chỉ lưu:
 
-* Tri thức đã kiểm chứng
-* Quy trình đã xác nhận
-* Kiến trúc đã xác nhận
+- Tri thức đã kiểm chứng
+- Quy trình đã xác nhận
+- Kiến trúc đã xác nhận
 
 Không lưu:
 
-* Ý tưởng
-* Giả thuyết
-* Suy đoán
+- Ý tưởng
+- Giả thuyết
+- Suy đoán
 
 ---
 
 ## LM_03B_ARCHIVE
 
-Chỉ dùng để lưu trữ.
+Thư mục:
+
+memory/LM_03B/
+
+Mục đích:
+
+Lưu tri thức ổn định.
 
 Không nạp mặc định đầu phiên.
+
+Chỉ đọc khi cần tra cứu.
 
 ---
 
 ## LM_04_CURRENT
 
+Thư mục:
+
+memory/LM_04/
+
 Lưu:
 
-* Nhật ký học tập gần đây
-* Kết quả kiểm chứng
-* Bài học vận hành
+- Nhật ký học tập gần đây
+- Kết quả kiểm chứng
+- Bài học vận hành
 
 ---
 
 ## LM_04_ARCHIVE
 
+Thư mục:
+
+memory/LM_04/
+
 Lưu:
 
-* Lịch sử cũ
-* Nhật ký cũ
+- Lịch sử cũ
+- Nhật ký cũ
 
 Không nạp mặc định đầu phiên.
 
@@ -204,13 +230,15 @@ Khi CURRENT quá lớn:
 
 GPT phải đề xuất:
 
-```
 Tổng hợp
+
 ↓
+
 Rút gọn
+
 ↓
+
 Chuyển archive
-```
 
 Không được để CURRENT tăng trưởng vô hạn.
 
@@ -222,13 +250,11 @@ Không được để CURRENT tăng trưởng vô hạn.
 
 Đánh số:
 
-```
-LM_03B_ARCHIVE_001.md
+LM_03B_<GPT>_ARCHIVE_001
 
-LM_03B_ARCHIVE_002.md
+LM_03B_<GPT>_ARCHIVE_002
 
-LM_03B_ARCHIVE_003.md
-```
+LM_03B_<GPT>_ARCHIVE_003
 
 Nguyên tắc:
 
@@ -242,19 +268,15 @@ Không ưu tiên chia theo thời gian.
 
 Đặt tên:
 
-```
-LM_04_ARCHIVE_YYYY_MM.md
-```
+LM_04_<GPT>_ARCHIVE_YYYY_MM
 
 Ví dụ:
 
-```
-LM_04_ARCHIVE_2026_06.md
+LM_04_ARCH_ARCHIVE_2026_06
 
-LM_04_ARCHIVE_2026_07.md
+LM_04_ARCH_ARCHIVE_2026_07
 
-LM_04_ARCHIVE_2026_08.md
-```
+LM_04_ARCH_ARCHIVE_2026_08
 
 Nguyên tắc:
 
