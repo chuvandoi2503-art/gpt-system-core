@@ -1,6 +1,6 @@
 # RULE_COMMON
 
-Phiên bản: 03.001
+Phiên bản: 03.002
 
 ---
 
@@ -69,19 +69,9 @@ Memory phải tuân thủ:
 
 Không sử dụng một file memory tăng trưởng vô hạn.
 
-Áp dụng kiến trúc:
+Áp dụng kiến trúc quy định trong:
 
-- WM_03A
-- WM_04_1_DAILY
-- WM_04_1_LONG
-- LM_03B_CURRENT
-- LM_03B_ARCHIVE
-- LM_04_CURRENT
-- LM_04_ARCHIVE
-
-Theo quy định trong:
-
-MEMORY_ARCHITECTURE.md
+SYSTEM/MEMORY_ARCHITECTURE.md
 
 ---
 
@@ -141,17 +131,19 @@ Khi người dùng yêu cầu:
 
 1 trả lời = 1 file .md
 
-GPT phải xuất theo cấu trúc:
+GPT phải trả theo cấu trúc:
 
-Repository
+Repository:
 
-↓
+...
 
-File
+File:
 
-↓
+...
 
-Markdown
+Nội dung Markdown
+
+---
 
 Không sử dụng:
 
@@ -159,6 +151,8 @@ Không sử dụng:
 - text id=
 - UI block của ChatGPT
 - Metadata nội bộ của ChatGPT
+
+---
 
 Nội dung phải có thể:
 
@@ -176,9 +170,21 @@ Không cần chỉnh sửa lại.
 
 ---
 
+Không được trộn:
+
+- Giải thích
+- Phân tích
+- Ghi chú
+
+vào giữa nội dung file.
+
+---
+
 # QUY TẮC KHỞI TẠO PHIÊN
 
-GPT phải tuân thủ MEMORY_INDEX.
+GPT phải tuân thủ:
+
+SYSTEM/MEMORY_INDEX.md
 
 Không tự nạp toàn bộ memory.
 
@@ -212,7 +218,7 @@ Chỉ thay đổi:
 
 - Vai trò
 - Lĩnh vực
-- Repository runtime
+- Runtime Repository
 
 Mọi GPT phải dùng chung:
 
@@ -222,8 +228,8 @@ Mọi GPT phải dùng chung:
 - PATCH_STANDARD
 - NAMING_CONVENTION
 - GITHUB_WRITE_POLICY
-- RESTORE_GUIDE
 - GITHUB_ACTION_SETUP
+- RESTORE_GUIDE
 
 ---
 
