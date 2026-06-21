@@ -1,287 +1,233 @@
 # GITHUB_ACTION_SETUP
 
-Phiên bản: 01.000
-
-Trạng thái: Áp dụng toàn hệ
+Phiên bản: 03.001
 
 ---
 
-# 1. MỤC ĐÍCH
+# MỤC TIÊU
 
-File này hướng dẫn kết nối GPT với GitHub Repository.
-
-Mục tiêu:
-
-* Đọc Memory.
-* Đọc Knowledge.
-* Đọc Rule.
-* Ghi Memory.
-* Ghi Knowledge.
-* Ghi Rule.
-
-Thông qua GitHub API.
-
----
-
-# 2. TRIẾT LÝ
+Thiết lập kết nối GitHub chuẩn cho toàn bộ hệ GPT.
 
 GitHub là nguồn chân lý.
 
-GPT không lưu bộ nhớ dài hạn.
+GPT đọc và ghi memory thông qua GitHub Action.
 
-GPT chỉ:
-
-* Đọc.
-* Suy luận.
-* Đề xuất.
-* Cập nhật.
-
-Dữ liệu phải nằm trên GitHub.
+Không phụ thuộc vào Knowledge Upload.
 
 ---
 
-# 3. KIẾN TRÚC CHUẨN
+# ACTION CHUẨN
 
-```
-GPT
-↓
-GitHub Action
-↓
-GitHub Repository
-```
+Hệ thống sử dụng:
+
+- getContent
+- createOrUpdateFile
 
 ---
 
-Ví dụ:
+# YÊU CẦU TỐI THIỂU
+
+Action phải hỗ trợ:
+
+## Đọc file
 
 ```
-GPT Content OS
-↓
-GitHub Action
-↓
-gpt-content-director-system
+getContent(
+ owner,
+ repo,
+ path
+)
 ```
 
----
-
-Ví dụ:
+Trả về:
 
 ```
-GPT Kiến Trúc Sư
-↓
-GitHub Action
-↓
-gpt-architect-system
-```
-
----
-
-# 4. GITHUB TOKEN
-
-Khuyến nghị:
-
-1 token dùng chung toàn hệ.
-
----
-
-Ví dụ:
-
-Token có quyền:
-
-```
-gpt-system-core
-
-gpt-architect-system
-
-gpt-content-director-system
-```
-
----
-
-Mục tiêu:
-
-Đơn giản hóa vận hành.
-
----
-
-# 5. QUYỀN TOKEN
-
-Bắt buộc:
-
-```
-Contents
-=
-Read & Write
-```
-
----
-
-Bắt buộc:
-
-```
-Metadata
-=
-Read
-```
-
----
-
-Không cần:
-
-```
-Administration
-
-Actions
-
-Secrets
-
-Codespaces
-```
-
----
-
-# 6. REPOSITORY ACCESS
-
-Khuyến nghị:
-
-Selected repositories
-
----
-
-Ví dụ:
-
-```
-gpt-system-core
-
-gpt-architect-system
-
-gpt-content-director-system
-```
-
----
-
-Không cần:
-
-All repositories
-
----
-
-# 7. ACTION CHUẨN
-
-Action chuẩn toàn hệ:
-
-```
-getContent
-```
-
----
-
-Mục đích:
-
-Đọc file.
-
----
-
-Action chuẩn:
-
-```
-createOrUpdateFile
-```
-
----
-
-Mục đích:
-
-Tạo file.
-
-Cập nhật file.
-
----
-
-# 8. GETCONTENT
-
-Input:
-
-```
-owner
-
-repo
-
-path
-```
-
----
-
-Ví dụ:
-
-```
-owner:
-chuvandoi2503-art
-
-repo:
-gpt-content-director-system
-
-path:
-SYSTEM/MEMORY_INDEX.md
-```
-
----
-
-Output:
-
-Nội dung file.
-
-SHA.
-
-Metadata.
-
----
-
-# 9. CREATEORUPDATEFILE
-
-Input:
-
-```
-owner
-
-repo
-
-path
-
 content
-
-message
-```
-
----
-
-Nếu cập nhật file cũ:
-
-Bắt buộc thêm:
-
-```
 sha
 ```
 
 ---
 
-# 10. QUY TRÌNH ĐỌC FILE
+## Ghi file
 
 ```
-Người dùng yêu cầu
-↓
-Đọc MEMORY_INDEX
-↓
-Xác định path
-↓
-Đọc file cần thiết
-↓
-Suy luận
+createOrUpdateFile(
+ owner,
+ repo,
+ path,
+ content,
+ sha,
+ branch
+)
 ```
 
 ---
 
-# 11. QUY TRÌNH SỬA FILE
+# REPOSITORY CORE
+
+Repository chuẩn:
+
+```
+gpt-system-core
+```
+
+Vai trò:
+
+- RULE_COMMON
+- MEMORY_ARCHITECTURE
+- MEMORY_INDEX
+- PATCH_STANDARD
+- NAMING_CONVENTION
+- GITHUB_WRITE_POLICY
+- RESTORE_GUIDE
+- GITHUB_ACTION_SETUP
+
+---
+
+# REPOSITORY GPT
+
+Mỗi GPT có repository riêng.
+
+Ví dụ:
+
+- gpt-architect-system
+- gpt-content-director-system
+- gpt-crm-system
+- gpt-sales-system
+
+Repository GPT chứa:
+
+- RULE_<GPT>
+- WM_03A
+- WM_04_1
+- LM_03B
+- LM_04
+- KN_02
+
+---
+
+# QUY TẮC KHỞI TẠO PHIÊN
+
+GPT phải đọc:
+
+## Core Repository
+
+```
+SYSTEM/MEMORY_INDEX.md
+```
+
+Từ đó xác định:
+
+- RULE_COMMON
+- MEMORY_ARCHITECTURE
+
+---
+
+## Runtime Repository
+
+Đọc theo quy trình riêng của GPT.
+
+Ví dụ GPT Content:
+
+- RULE_CONTENT
+- WM_03A_CONTENT
+- WM_04_1_CONTENT_DAILY
+- LM_03B_CONTENT_CURRENT
+
+---
+
+# AUTHENTICATION
+
+Khuyến nghị:
+
+GitHub Fine-Grained Personal Access Token
+
+---
+
+Quyền tối thiểu:
+
+```
+Contents
+Read and Write
+```
+
+```
+Metadata
+Read
+```
+
+---
+
+# KIỂM TRA ACTION
+
+## Test đọc
+
+Đọc:
+
+```
+SYSTEM/MEMORY_INDEX.md
+```
+
+PASS khi:
+
+- Đọc được file
+- Nhận được SHA
+- Nhận được content
+
+---
+
+## Test ghi
+
+Tạo:
+
+```
+TEST_CREATE_FILE.md
+```
+
+PASS khi:
+
+- File được tạo
+- GitHub trả kết quả thành công
+
+---
+
+## Test cập nhật
+
+Đọc file
+
+↓
+
+Lấy SHA
+
+↓
+
+Cập nhật nội dung
+
+↓
+
+Ghi lại file
+
+PASS khi:
+
+- SHA mới được tạo
+- Nội dung được cập nhật
+
+---
+
+# QUY TẮC GHI MEMORY
+
+GPT không được ghi memory nếu:
+
+- Chưa đọc file
+- Chưa lấy SHA
+- Chưa có PATCH
+- Chưa có xác nhận người dùng
+
+---
+
+# QUY TẮC GHI FILE ĐÃ TỒN TẠI
+
+Bắt buộc:
 
 ```
 Đọc file
@@ -290,205 +236,95 @@ Lấy SHA
 ↓
 Tạo PATCH
 ↓
-Người dùng duyệt
+Chờ xác nhận
 ↓
 Ghi GitHub
 ```
 
 ---
 
-Không được bỏ qua bước PATCH.
+# QUY TẮC TẠO FILE MỚI
 
----
-
-# 12. QUY TRÌNH TẠO FILE
+Bắt buộc:
 
 ```
-Tạo nội dung
+Tạo PATCH
 ↓
-Hiển thị cho người dùng
-↓
-Người dùng duyệt
+Chờ xác nhận
 ↓
 Tạo file mới
 ```
 
----
-
-Không cần SHA.
+Không được tự tạo file memory khi chưa có xác nhận.
 
 ---
 
-# 13. QUY TRÌNH KHỞI TẠO GPT MỚI
+# QUY TẮC KHỞI TẠO GPT MỚI
 
-Bước 1
+Trước khi vận hành memory thật:
 
-Tạo Repository.
+Bắt buộc PASS:
 
----
-
-Bước 2
-
-Kết nối GitHub Action.
+- getContent
+- createOrUpdateFile
 
 ---
 
-Bước 3
+# QUY TẮC DỰ PHÒNG
 
-Import OpenAPI Schema.
+Nếu GitHub Action lỗi:
 
----
+GPT được phép sử dụng Knowledge Upload tạm thời.
 
-Bước 4
-
-Tạo:
+Nhưng phải thông báo rõ:
 
 ```
-MEMORY_INDEX
+GitHub không khả dụng.
+Đang sử dụng dữ liệu dự phòng.
 ```
 
+Knowledge Upload không được xem là nguồn chân lý.
+
 ---
 
-Bước 5
+# QUY TẮC XUẤT FILE .MD
 
-Tạo:
+Khi người dùng yêu cầu:
 
 ```
-Knowledge
-
-Rule
-
-Memory
+1 trả lời = 1 file .md
 ```
 
----
+GPT phải xuất Markdown thuần.
 
-Bước 6
+Không sử dụng:
 
-Kiểm tra đọc ghi.
+- :::writing
+- text id=
+- UI block của ChatGPT
+- Metadata nội bộ của ChatGPT
 
----
-
-PASS.
-
----
-
-# 14. KIỂM TRA KẾT NỐI
-
-Test đọc:
+Nội dung phải có thể:
 
 ```
-SYSTEM/MEMORY_INDEX.md
+Copy
+↓
+Paste vào GitHub
+↓
+Commit ngay
 ```
 
----
-
-Nếu đọc được:
-
-PASS.
+không cần dọn dẹp lại.
 
 ---
 
-Test ghi:
+# TRẠNG THÁI PASS
 
-```
-TEST_CREATE_FILE
-```
+Hệ GitHub Action được xem là PASS khi:
 
----
-
-Nếu ghi được:
-
-PASS.
-
----
-
-# 15. XỬ LÝ LỖI THƯỜNG GẶP
-
-Lỗi:
-
-```
-403
-```
-
----
-
-Nguyên nhân:
-
-Token không có quyền.
-
----
-
-Kiểm tra:
-
-```
-Contents
-
-Read & Write
-```
-
----
-
-Lỗi:
-
-```
-Repository not found
-```
-
----
-
-Nguyên nhân:
-
-Sai repo.
-
-Sai quyền.
-
----
-
-Lỗi:
-
-```
-Resource not accessible
-```
-
----
-
-Nguyên nhân:
-
-Token chưa được cấp quyền repo.
-
----
-
-# 16. NGUYÊN TẮC BẢO TRÌ
-
-Schema dùng chung.
-
-Action dùng chung.
-
-Token dùng chung.
-
-Repository tách riêng.
-
----
-
-Mục tiêu:
-
-Giảm chi phí bảo trì.
-
----
-
-# 17. QUY TẮC CUỐI CÙNG
-
-Nếu phải lựa chọn giữa:
-
-Tự động hóa nhiều hơn
-
-hoặc
-
-Đơn giản hơn
-
-Ưu tiên:
-
-Đơn giản hơn.
-
-Chỉ tự động hóa khi tạo ra giá trị thực tế.
+- Đọc được Core Repository
+- Đọc được Runtime Repository
+- Tạo file mới thành công
+- Cập nhật file thành công
+- Trả về SHA chính xác
+- GPT có thể khởi tạo phiên hoàn toàn từ GitHub
