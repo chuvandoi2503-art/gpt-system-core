@@ -1,435 +1,192 @@
 # RESTORE_GUIDE
 
-Phiên bản: 01.000
-
-Trạng thái: Áp dụng toàn hệ
+Phiên bản: 03.000
 
 ---
 
-# 1. MỤC ĐÍCH
+# MỤC TIÊU
 
-File này mô tả quy trình khôi phục hoàn chỉnh một GPT từ GitHub.
+Khôi phục đúng trạng thái GPT khi:
 
-Mục tiêu:
+- Mất GPT
+- Tạo GPT mới
+- Clone GPT
+- Di chuyển repository
+- Thay đổi Action
 
-* Không phụ thuộc GPT cũ.
-* Không phụ thuộc bộ nhớ hội thoại.
-* Không phụ thuộc người tạo ban đầu.
-* Có thể dựng lại GPT bất kỳ lúc nào.
+GitHub là nguồn chân lý.
 
----
-
-# 2. TRIẾT LÝ
-
-GPT có thể mất.
-
-GPT có thể bị xóa.
-
-GPT có thể bị lỗi.
-
-GitHub mới là thứ tồn tại lâu dài.
+Không sử dụng memory hội thoại để khôi phục hệ thống.
 
 ---
 
-Nguyên tắc:
+# QUY TRÌNH KHÔI PHỤC CHUẨN
 
-```text id="2gtnca"
-GitHub
-=
-Nguồn chân lý
-
-GPT
-=
-Lớp suy luận
-```
-
----
-
-# 3. ĐIỀU KIỆN KHÔI PHỤC
-
-Cần:
-
-* GitHub Repository.
-* OpenAPI Schema.
-* GitHub Token.
-* GPT Builder Backup.
-
----
-
-Nếu có đủ 4 thành phần:
-
-Có thể dựng lại GPT.
-
----
-
-# 4. THÀNH PHẦN TỐI THIỂU
-
-Bắt buộc:
-
-```text id="8s8x3f"
-MEMORY_INDEX
-
-RULE_COMMON
-
-RULE_<GPT>
-
-WM_03A_<GPT>
-
-WM_04_1_<GPT>
-```
-
----
-
-Đây là tập tối thiểu để GPT hoạt động.
-
----
-
-# 5. THÀNH PHẦN ĐẦY ĐỦ
-
-Khuyến nghị:
-
-```text id="c1m2e0"
-KN_00
-
-KN_01
-
-KN_02_<GPT>
-
-RULE_COMMON
-
-RULE_<GPT>
-
-WM_03A_<GPT>
-
-WM_04_1_<GPT>
-
-LM_03B_<GPT>
-
-LM_04_<GPT>
-
-GPT_BUILDER_BACKUP
-```
-
----
-
-# 6. QUY TRÌNH KHÔI PHỤC
-
-Bước 1
-
-Tạo GPT mới.
-
----
-
-Bước 2
-
-Đặt tên GPT.
-
----
-
-Bước 3
-
-Dán Instructions từ:
-
-```text id="nvq5mz"
-GPT_BUILDER_BACKUP
-```
-
----
-
-Bước 4
-
-Import OpenAPI Schema.
-
----
-
-Bước 5
-
-Cấu hình GitHub Action.
-
----
-
-Bước 6
-
-Gắn Token.
-
----
-
-Bước 7
-
-Kiểm tra đọc GitHub.
-
----
-
-PASS.
-
----
-
-# 7. KIỂM TRA ĐỌC
+## Bước 1
 
 Đọc:
 
-```text id="y9r8d4"
 SYSTEM/MEMORY_INDEX.md
-```
 
 ---
 
-Nếu đọc được:
-
-PASS.
-
----
-
-Nếu không đọc được:
-
-Dừng khôi phục.
-
----
-
-# 8. KIỂM TRA BỘ NHỚ
+## Bước 2
 
 Đọc:
 
-```text id="glk3ht"
+SYSTEM/MEMORY_ARCHITECTURE.md
+
+---
+
+## Bước 3
+
+Đọc:
+
 RULE_COMMON
 
-RULE_<GPT>
+---
 
-WM_03A_<GPT>
+## Bước 4
 
-WM_04_1_<GPT>
-```
+Đọc memory của GPT cần khôi phục.
+
+Mặc định:
+
+- WM_03A_<GPT>
+- WM_04_1_<GPT>_DAILY
+- LM_03B_<GPT>_CURRENT
+
+Không đọc mặc định:
+
+- WM_04_1_<GPT>_LONG
+- LM_03B_<GPT>_ARCHIVE
+- LM_04_<GPT>_CURRENT
+- LM_04_<GPT>_ARCHIVE
 
 ---
 
-Nếu đọc được:
+# KHÔI PHỤC GPT MỚI
 
-PASS.
+Khi tạo GPT mới:
 
----
+Bắt buộc có:
 
-# 9. KIỂM TRA GHI
-
-Tạo file:
-
-```text id="aw4r29"
-TEST_CREATE_FILE.md
-```
-
----
-
-Commit:
-
-```text id="jtwjhf"
-TEST_CREATE_FILE
-```
-
----
-
-Nếu tạo được:
-
-PASS.
-
----
-
-Sau đó có thể xóa file test.
-
----
-
-# 10. KHÔI PHỤC SAU KHI MẤT GPT
-
-Tình huống:
-
-GPT bị xóa.
-
----
-
-Giải pháp:
-
-```text id="e5o5af"
-Tạo GPT mới
-
-↓
-
-Dán GPT_BUILDER_BACKUP
-
-↓
-
-Kết nối GitHub
-
-↓
-
-PASS
-```
-
----
-
-Không cần khôi phục bộ nhớ thủ công.
-
----
-
-# 11. CHUYỂN TÀI KHOẢN CHATGPT
-
-Tình huống:
-
-Đổi tài khoản.
-
----
-
-Giải pháp:
-
-```text id="wuj0it"
-GPT_BUILDER_BACKUP
-
-+
-
-GitHub
-
-+
-
-Schema
-```
-
----
-
-Khôi phục đầy đủ.
-
----
-
-# 12. CHUYỂN NGƯỜI QUẢN TRỊ
-
-Tình huống:
-
-Người vận hành mới tiếp quản.
-
----
-
-Yêu cầu:
-
-* Có GitHub.
-* Có Token.
-* Có Backup.
-
----
-
-Không cần truy cập GPT cũ.
-
----
-
-# 13. KIỂM TRA HOÀN THIỆN
-
-Checklist:
-
-```text id="2cn4rk"
-Đọc MEMORY_INDEX
-
-Đọc RULE_COMMON
-
-Đọc WM_03A
-
-Đọc WM_04_1
-
-Ghi file test
-
-Đọc file test
-```
-
----
-
-Nếu PASS toàn bộ:
-
-GPT hoạt động bình thường.
-
----
-
-# 14. NHỮNG GÌ KHÔNG CẦN KHÔI PHỤC
-
-Không cần:
-
-* Hội thoại cũ.
-* Context cũ.
-* Chat History.
-* Memory ChatGPT.
-
----
-
-GitHub mới là thứ cần khôi phục.
-
----
-
-# 15. BACKUP NGOÀI GITHUB
+- RULE_COMMON
+- RULE_<GPT>
+- WM_03A_<GPT>
 
 Khuyến nghị:
 
-Backup định kỳ:
-
-* PC cá nhân.
-* NAS.
-* Google Drive.
-
----
-
-Tần suất:
-
-* KN
-* RULE
-
-khi thay đổi.
+- WM_04_1_<GPT>_DAILY
+- WM_04_1_<GPT>_LONG
+- LM_03B_<GPT>_CURRENT
+- LM_04_<GPT>_CURRENT
 
 ---
 
-WM và LM:
+# KHÔI PHỤC SAU KHI MẤT GPT
 
-Hàng tuần hoặc khi có thay đổi lớn.
+Đọc lần lượt:
 
----
+1. MEMORY_INDEX
+2. MEMORY_ARCHITECTURE
+3. RULE_COMMON
+4. RULE_<GPT>
+5. WM_03A_<GPT>
 
-# 16. ĐỊNH NGHĨA THÀNH CÔNG
+Sau đó mới đọc:
 
-Một GPT được xem là:
+6. WM_04_1_<GPT>_DAILY
+7. LM_03B_<GPT>_CURRENT
 
-Có thể khôi phục
-
-khi:
-
-Người khác
-
-↓
-
-Không cần GPT cũ
-
-↓
-
-Chỉ dùng GitHub
-
-↓
-
-Có thể dựng lại GPT hoạt động bình thường.
+GPT phải có khả năng hoạt động ngay sau bước 5.
 
 ---
 
-# 17. QUY TẮC CUỐI CÙNG
+# KHÔI PHỤC MEMORY
 
-Nếu một GPT không thể dựng lại từ GitHub:
+## Working Memory
 
-Kiến trúc đó chưa đạt chuẩn.
+Ưu tiên:
 
-Mục tiêu cuối của toàn hệ là:
-
-```text id="8dzvzb"
-Xóa GPT
+WM_03A
 
 ↓
 
-Tạo GPT mới
+WM_04_1_DAILY
 
 ↓
 
-Kết nối GitHub
+WM_04_1_LONG
+
+---
+
+## Long-term Memory
+
+Ưu tiên:
+
+LM_03B_CURRENT
 
 ↓
 
-Hoạt động bình thường
-```
+LM_04_CURRENT
 
-mà không mất tri thức và không mất khả năng vận hành.
+↓
+
+ARCHIVE
+
+---
+
+# KHÔI PHỤC GITHUB ACTION
+
+Kiểm tra:
+
+- Schema
+- Authentication
+- getContent
+- createOrUpdateFile
+
+Nếu Action lỗi:
+
+GPT được phép sử dụng Knowledge Upload tạm thời.
+
+Nhưng phải báo rõ:
+
+"GitHub không khả dụng. Đang dùng dữ liệu dự phòng."
+
+---
+
+# QUY TẮC KHÔI PHỤC
+
+Không khôi phục toàn bộ archive.
+
+Không đọc toàn bộ lịch sử.
+
+Không nạp toàn bộ memory.
+
+Ưu tiên:
+
+- Memory cần cho vận hành hiện tại
+- Memory mới nhất
+- Memory đã kiểm chứng
+
+---
+
+# TRẠNG THÁI PASS
+
+Một GPT được xem là khôi phục thành công khi:
+
+- Đọc được MEMORY_INDEX
+- Đọc được RULE_COMMON
+- Đọc được RULE_<GPT>
+- Đọc được WM_03A_<GPT>
+
+Và xác định được:
+
+- Vai trò
+- Mục tiêu
+- Quy trình vận hành
+- Cấu trúc memory
+- Repository đang sử dụng
+
+Không bắt buộc đọc archive để đạt trạng thái PASS.
