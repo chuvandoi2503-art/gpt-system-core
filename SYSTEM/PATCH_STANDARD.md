@@ -1,354 +1,239 @@
 # PATCH_STANDARD
 
-Phiên bản: 01.000
-
-Trạng thái: Áp dụng toàn hệ
+Phiên bản: 03.000
 
 ---
 
-# 1. MỤC ĐÍCH
+# MỤC TIÊU
 
-File này quy định chuẩn PATCH dùng chung cho toàn bộ hệ GPT.
+PATCH là cơ chế trung gian giữa:
 
-Mục tiêu:
-
-* Thống nhất cập nhật bộ nhớ.
-* Giảm ghi nhầm GitHub.
-* Dễ review.
-* Dễ kiểm tra.
-* Dễ khôi phục.
-
----
-
-# 2. TRIẾT LÝ
-
-GPT không được sửa bộ nhớ trực tiếp.
-
-Quy trình chuẩn:
-
-PATCH
-
+```text
+Hội thoại
 ↓
-
-Người dùng duyệt
-
-↓
-
-Ghi GitHub
-
----
-
-Không được bỏ qua bước PATCH.
-
----
-
-# 3. KHI NÀO TẠO PATCH
-
-Bắt buộc tạo PATCH khi:
-
-* Kết thúc phiên.
-* Thay đổi Memory.
-* Thay đổi Rule.
-* Thay đổi Knowledge.
-* Thay đổi System.
-
----
-
-# 4. PHÂN LOẠI PATCH
-
-Toàn hệ sử dụng 5 nhóm chuẩn:
-
-```text
-UPDATE_03A
-
-UPDATE_03B
-
-UPDATE_04_1
-
-UPDATE_04_ARCHIVE
-
-DISCARD
+Memory
 ```
 
----
+PATCH giúp:
 
-# 5. UPDATE_03A
-
-Mục đích:
-
-Cập nhật Working Memory lõi.
-
-Ví dụ:
-
-* Mục tiêu GPT thay đổi.
-* Module GPT thay đổi.
-* Nguyên tắc GPT thay đổi.
-* Danh tính GPT thay đổi.
+* Kiểm tra trước khi ghi
+* Giảm ghi nhầm
+* Giảm mất dữ liệu
+* Giữ người dùng là người quyết định cuối cùng
 
 ---
 
-Tần suất:
+# NGUYÊN TẮC
 
-Rất thấp.
+PATCH không phải bộ nhớ.
 
----
+PATCH không được lưu tồn đọng.
 
-File đích:
+PATCH chỉ tồn tại trong phiên hiện tại.
 
-```text
-WM_03A_<GPT>
-```
-
----
-
-# 6. UPDATE_03B
-
-Mục đích:
-
-Cập nhật Long-term Memory.
-
-Chỉ lưu:
-
-Tri thức đã xác nhận.
-
----
-
-Ví dụ:
-
-* Format thắng.
-* Hook thắng.
-* Bài học đã kiểm chứng.
-* Quy trình đã xác nhận.
-
----
-
-File đích:
-
-```text
-LM_03B_<GPT>
-```
-
----
-
-# 7. UPDATE_04_1
-
-Mục đích:
-
-Cập nhật trạng thái công việc.
-
-Ví dụ:
-
-* Việc đang làm.
-* Ý tưởng đang triển khai.
-* Backlog.
-* Kế hoạch ngắn hạn.
-
----
-
-File đích:
-
-```text
-WM_04_1_<GPT>
-```
-
----
-
-# 8. UPDATE_04_ARCHIVE
-
-Mục đích:
-
-Lưu lịch sử.
-
-Ví dụ:
-
-* Quyết định.
-* Học tập.
-* Thử nghiệm.
-* Nhật ký.
-
----
-
-File đích:
-
-```text
-LM_04_<GPT>
-```
-
----
-
-# 9. DISCARD
-
-Mục đích:
-
-Loại bỏ.
-
----
-
-Bao gồm:
-
-* Ý tưởng chưa đủ cơ sở.
-* Kết luận chưa xác nhận.
-* Thông tin tạm thời.
-* Nội dung không còn giá trị.
-
----
-
-Không ghi GitHub.
-
----
-
-# 10. CẤU TRÚC PATCH CHUẨN
-
-Ví dụ:
-
-```text
-UPDATE_04_1
-
-- Đã chốt tên kênh:
-  Đợi Làm Bố
-
-- Cập nhật mã:
-  DLB
-
-- Cập nhật hệ kênh gia đình
-```
-
----
-
-# 11. KHÔNG GHI NGAY
-
-Sau khi tạo PATCH:
-
-Không được ghi GitHub ngay.
-
-Phải chờ xác nhận.
-
----
-
-Ví dụ:
-
-Đúng:
+Sau khi được duyệt:
 
 ```text
 PATCH
 ↓
-Người dùng đồng ý
+Ghi vào file đích
 ↓
-Ghi GitHub
+Kết thúc
 ```
+
+Không tạo backlog PATCH.
+
+Không tạo thư mục PATCH.
+
+Không lưu PATCH để tổng hợp sau.
 
 ---
 
-Sai:
+# QUY TRÌNH KẾT THÚC PHIÊN
+
+Người dùng nói:
 
 ```text
-PATCH
-↓
-Ghi GitHub
+Kết thúc phiên
 ```
 
----
-
-# 12. QUY TẮC FILE MỚI
-
-Nếu tạo file mới:
-
-Được phép tạo PATCH.
-
-Sau khi xác nhận:
-
-Được phép tạo file.
-
----
-
-Không cần SHA.
-
----
-
-# 13. QUY TẮC FILE CŨ
-
-Nếu sửa file cũ:
-
-Bắt buộc:
-
-* Đọc file.
-* Lấy SHA.
-* Tạo PATCH.
-* Chờ xác nhận.
-* Mới được ghi.
-
----
-
-# 14. QUY TẮC KẾT THÚC PHIÊN
-
-Khi người dùng nói:
-
-"Kết thúc phiên"
-
-GPT phải tự động rà soát.
-
-Phân loại:
+GPT phải:
 
 ```text
-UPDATE_03A
-UPDATE_03B
-UPDATE_04_1
-UPDATE_04_ARCHIVE
-DISCARD
+Rà soát phiên
+↓
+Tạo PATCH
+↓
+Chờ duyệt
+↓
+Ghi GitHub
+↓
+Hoàn tất
 ```
 
 ---
 
-Không được bỏ qua bước này.
+# PHÂN LOẠI PATCH
+
+## UPDATE_WM_03A
+
+Sử dụng khi:
+
+* Vai trò GPT thay đổi
+* Quy trình thay đổi
+* Nguyên tắc thay đổi
+* Cấu hình hệ thống thay đổi
 
 ---
 
-# 15. QUY TẮC CHẤT LƯỢNG
+## UPDATE_WM_04_1_DAILY
 
-PATCH phải:
+Sử dụng khi:
 
-* Ngắn gọn.
-* Rõ ràng.
-* Có lý do.
-* Có giá trị.
+* Việc đang dở trong ngày thay đổi
+
+Ghi vào:
+
+```text
+WM_04_1_DAILY.md
+```
+
+File này được phép ghi đè.
 
 ---
 
-Không đưa toàn bộ hội thoại vào PATCH.
+## UPDATE_WM_04_1_LONG
+
+Sử dụng khi:
+
+* Xuất hiện việc dài hạn mới
+* Tiến độ việc dài hạn thay đổi
+* Hoàn thành việc dài hạn
+
+Ghi vào:
+
+```text
+WM_04_1_LONG.md
+```
 
 ---
 
-# 16. QUY TẮC KHÔNG PHÌNH BỘ NHỚ
+## UPDATE_LM_03B_CURRENT
+
+Sử dụng khi:
+
+Xuất hiện tri thức mới đã được kiểm chứng.
+
+Ví dụ:
+
+* Quy tắc mới
+* Kiến trúc mới
+* Workflow mới
+* Bài học đã xác nhận
 
 Không lưu:
 
-* Caption hàng ngày.
-* Hook hàng ngày.
-* Script hàng ngày.
-* Nội dung ngắn hạn không còn giá trị.
+* Giả thuyết
+* Suy đoán
+* Ý tưởng chưa kiểm chứng
 
 ---
 
-Chỉ lưu:
+## UPDATE_LM_04_CURRENT
 
-Những gì ảnh hưởng tới tương lai.
+Sử dụng khi:
+
+Cần lưu lịch sử học tập.
+
+Ví dụ:
+
+* Bài học triển khai
+* Lỗi gặp phải
+* Kết quả kiểm chứng
 
 ---
 
-# 17. QUY TẮC CUỐI CÙNG
+## DISCARD
 
-Nếu phân vân:
+Thông tin không lưu.
 
-Lưu
+Ví dụ:
 
-hay
+* Trao đổi tạm thời
+* Ý tưởng bị loại
+* Thảo luận không còn giá trị
 
-Không lưu
+---
 
-Ưu tiên:
+# QUY TẮC GHI GITHUB
 
-Không lưu.
+Nếu file đã tồn tại:
 
-Chỉ lưu khi thực sự tạo giá trị dài hạn.
+GPT phải:
 
-Bộ nhớ chất lượng cao luôn tốt hơn bộ nhớ số lượng lớn.
+```text
+Đọc file
+↓
+Lấy SHA
+↓
+Tạo PATCH
+↓
+Chờ xác nhận
+↓
+Ghi GitHub
+```
+
+---
+
+Nếu file chưa tồn tại:
+
+GPT phải:
+
+```text
+Tạo PATCH
+↓
+Chờ xác nhận
+↓
+Tạo file mới
+```
+
+---
+
+# QUY TẮC TỔNG HỢP MEMORY
+
+Không tổng hợp từ PATCH.
+
+PATCH không phải nguồn chân lý.
+
+Nguồn chân lý là:
+
+```text
+GitHub Repository
+```
+
+Khi cần tổng hợp:
+
+GPT đọc trực tiếp:
+
+```text
+WM_03A
+WM_04_1
+LM_03B
+LM_04
+```
+
+từ GitHub.
+
+---
+
+# QUY TẮC HOÀN TẤT
+
+Sau khi PATCH được ghi vào file đích:
+
+PATCH được xem là hoàn thành.
+
+Không tiếp tục lưu PATCH ở nơi khác.
+
+Không tạo lịch sử PATCH.
+
+Không tạo archive PATCH.
