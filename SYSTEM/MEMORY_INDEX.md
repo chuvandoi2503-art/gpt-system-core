@@ -1,47 +1,202 @@
 # MEMORY_INDEX
 
-Phiên bản: 02.000
+Phiên bản: 03.000
 
 ---
 
-## Repository mặc định
+# MỤC ĐÍCH
 
-owner: chuvandoi2503-art
+Memory Index là điểm vào duy nhất của hệ thống memory.
 
-repo: gpt-system-core
+GPT phải đọc file này trước khi truy cập memory.
 
----
-
-## Knowledge
-
-KN_00 = knowledge/KN_00 - HIẾN PHÁP GPT.md
-
-KN_01 = knowledge/KN_01 - HỆ ĐIỀU HÀNH HỌC TẬP VÀ HỖ TRỢ GPT.md
+Không được hardcode path memory ngoài các cấu hình hệ thống đã được xác nhận.
 
 ---
 
-## Rules
+# SYSTEM
 
-RULE_COMMON = rules/RULE_COMMON - QUY TẮC CHUNG TOÀN HỆ GPT.md
+## RULE_COMMON
 
----
+Path:
 
-## System
+```text
+SYSTEM/RULE_COMMON.md
+```
 
-MEMORY_ARCHITECTURE = SYSTEM/MEMORY_ARCHITECTURE.md
+Mô tả:
 
-NAMING_CONVENTION = SYSTEM/NAMING_CONVENTION.md
-
-PATCH_STANDARD = SYSTEM/PATCH_STANDARD.md
-
-GITHUB_WRITE_POLICY = SYSTEM/GITHUB_WRITE_POLICY.md
-
-GITHUB_ACTION_SETUP = SYSTEM/GITHUB_ACTION_SETUP.md
-
-RESTORE_GUIDE = SYSTEM/RESTORE_GUIDE.md
+Quy tắc vận hành chung cho toàn bộ GPT.
 
 ---
 
-## Schemas
+## MEMORY_ARCHITECTURE
 
-GITHUB_MEMORY_ACTION = schemas/github-memory-action.json
+Path:
+
+```text
+SYSTEM/MEMORY_ARCHITECTURE.md
+```
+
+Mô tả:
+
+Kiến trúc memory chuẩn của toàn hệ.
+
+---
+
+## GITHUB_WRITE_POLICY
+
+Path:
+
+```text
+SYSTEM/GITHUB_WRITE_POLICY.md
+```
+
+Mô tả:
+
+Quy tắc ghi GitHub.
+
+---
+
+## PATCH_STANDARD
+
+Path:
+
+```text
+SYSTEM/PATCH_STANDARD.md
+```
+
+Mô tả:
+
+Chuẩn PATCH.
+
+---
+
+## NAMING_CONVENTION
+
+Path:
+
+```text
+SYSTEM/NAMING_CONVENTION.md
+```
+
+Mô tả:
+
+Quy tắc đặt tên.
+
+---
+
+# MEMORY STRUCTURE STANDARD
+
+Mọi GPT phải sử dụng cấu trúc:
+
+```text
+WM_03A/
+
+WM_04_1/
+
+LM_03B/
+
+LM_04/
+```
+
+---
+
+## WM_03A
+
+Bộ nhớ lõi GPT.
+
+Ví dụ:
+
+```text
+WM_03A_ARCH.md
+
+WM_03A_CONTENT.md
+```
+
+---
+
+## WM_04_1
+
+Việc đang dở.
+
+Bao gồm:
+
+```text
+WM_04_1_DAILY.md
+
+WM_04_1_LONG.md
+```
+
+---
+
+## LM_03B
+
+Tri thức đã kiểm chứng.
+
+Bao gồm:
+
+```text
+LM_03B_CURRENT.md
+
+LM_03B_ARCHIVE_001.md
+
+LM_03B_ARCHIVE_002.md
+```
+
+---
+
+## LM_04
+
+Nhật ký học tập.
+
+Bao gồm:
+
+```text
+LM_04_CURRENT.md
+
+LM_04_ARCHIVE_YYYY_MM.md
+```
+
+---
+
+# QUY TẮC KHỞI TẠO PHIÊN CHUẨN
+
+Mặc định nạp:
+
+```text
+RULE_COMMON
+
+RULE_<GPT>
+
+WM_03A_<GPT>
+
+WM_04_1_DAILY
+
+LM_03B_CURRENT
+```
+
+---
+
+Không nạp mặc định:
+
+```text
+WM_04_1_LONG
+
+LM_03B_ARCHIVE
+
+LM_04_CURRENT
+
+LM_04_ARCHIVE
+```
+
+---
+
+Chỉ đọc khi:
+
+* Người dùng yêu cầu
+* Thiếu dữ liệu xử lý
+* Cần tra cứu lịch sử
+
+```
+```
