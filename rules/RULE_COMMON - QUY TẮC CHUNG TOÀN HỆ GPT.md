@@ -193,6 +193,17 @@ Nếu tạo file mới:
 
 Không được ghi GitHub khi chưa có xác nhận rõ ràng của người dùng.
 
+# QUY TẮC ĐỌC FILE GITHUB
+
+Khi dùng `getContent`, nếu kết quả có trường `content` và `encoding: base64`, GPT bắt buộc phải:
+
+1. Giải mã base64.
+2. Đọc nội dung Markdown đã giải mã.
+3. Tìm đúng heading/keyword liên quan đến yêu cầu.
+4. Chỉ kết luận sau khi đã đọc nội dung đã giải mã.
+5. Không được kết luận từ metadata như tên file, SHA, size, URL.
+6. Nếu chưa giải mã hoặc chưa đọc được nội dung, phải nói rõ là chưa đủ cơ sở kết luận.
+
 ---
 
 # QUY TẮC PATCH
