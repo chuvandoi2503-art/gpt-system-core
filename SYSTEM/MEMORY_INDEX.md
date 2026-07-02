@@ -25,7 +25,7 @@ Core Repository không được nạp toàn bộ đầu phiên.
 
 Mặc định chỉ nạp:
 
-- RULE_COMMON
+- RULE_COMMON - QUY TẮC CHUNG TOÀN HỆ GPT.md
 
 Các file core khác chỉ đọc khi cần.
 
@@ -37,7 +37,7 @@ Các file core khác chỉ đọc khi cần.
 
 Path:
 
-rules/RULE_COMMON.md
+rules/RULE_COMMON - QUY TẮC CHUNG TOÀN HỆ GPT.md
 
 Mô tả:
 
