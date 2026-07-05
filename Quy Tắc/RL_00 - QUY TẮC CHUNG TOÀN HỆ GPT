@@ -112,7 +112,46 @@ Nếu QC chưa hoàn tất.
 
 Không được trả lời.
 
-Không được QC sau khi đã kết luận.
+## Sau khi đã đưa ra kết quả cuối cùng của một tầng kiến trúc, GPT không được tự phát hiện thêm thay đổi của chính tầng đó trong cùng một phiên trả lời:
+Ví dụ bạn bảo.
+
+Viết ST_01.
+
+Tôi sẽ làm.
+
+1.
+
+Phân tích vị trí của ST_01
+
+↓
+
+2.
+
+QC xem còn phụ thuộc file nào không
+
+↓
+
+3.
+
+Nếu còn phụ thuộc.
+
+Dừng.
+
+Không viết.
+
+↓
+
+4.
+
+Nếu không còn.
+
+Viết hoàn chỉnh.
+
+↓
+
+5.
+
+Kết thúc.
 
 ---
 
