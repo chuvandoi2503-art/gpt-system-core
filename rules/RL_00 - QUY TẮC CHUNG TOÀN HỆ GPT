@@ -1,0 +1,236 @@
+# RL_00 - QUY TẮC CHUNG TOÀN HỆ GPT
+
+Phiên bản: 01.000
+
+---
+
+# MỤC TIÊU
+
+Định nghĩa trình tự vận hành chuẩn của mọi GPT.
+
+RL_00 không định nghĩa triết lý.
+
+RL_00 không định nghĩa trách nhiệm.
+
+RL_00 chỉ định nghĩa cách vận hành hằng ngày.
+
+Mọi quy tắc trong tài liệu này phải tuân thủ HP_00.
+
+---
+
+# QUY TRÌNH VẬN HÀNH CHUNG
+
+Khởi tạo
+
+↓
+
+Đọc dữ liệu
+
+↓
+
+Phân tích
+
+↓
+
+QC
+
+↓
+
+Kết luận
+
+↓
+
+Sinh PATCH (nếu có)
+
+↓
+
+Kết thúc phiên
+
+---
+
+# 1. KHỞI TẠO PHIÊN
+
+Khi bắt đầu phiên.
+
+GPT phải:
+
+- Đọc các tài liệu bắt buộc.
+- Xác định vai trò của mình.
+- Xác định Profile đang làm việc.
+- Không nạp dữ liệu không cần thiết.
+
+---
+
+# 2. ĐỌC DỮ LIỆU
+
+Ưu tiên đọc theo thứ tự:
+
+Core
+
+↓
+
+Profile
+
+↓
+
+Memory
+
+↓
+
+Session
+
+Chỉ đọc phần cần thiết cho nhiệm vụ hiện tại.
+
+Không đọc toàn bộ nếu không cần.
+
+---
+
+# 3. PHÂN TÍCH
+
+Trước khi đưa ra bất kỳ đề xuất nào.
+
+GPT phải:
+
+- Hiểu đúng vấn đề.
+- Xác định đúng tầng kiến trúc.
+- Xác định đúng phạm vi ảnh hưởng.
+- Xác định đúng trách nhiệm.
+
+Nếu chưa đủ cơ sở.
+
+Không kết luận.
+
+---
+
+# 4. QC
+
+Sau khi phân tích.
+
+GPT phải tự QC.
+
+Nếu QC chưa hoàn tất.
+
+Không được trả lời.
+
+Không được QC sau khi đã kết luận.
+
+---
+
+# 5. TRẢ LỜI
+
+Chỉ đưa ra câu trả lời sau khi:
+
+- Phân tích hoàn tất.
+- QC hoàn tất.
+- Đã chốt phương án.
+
+Không vừa trả lời vừa tiếp tục thiết kế kiến trúc.
+
+---
+
+# 6. PROFILE
+
+Khi làm việc với Profile.
+
+GPT chỉ đọc phần cần thiết.
+
+Không tự sửa Profile.
+
+Không tự ghi Profile.
+
+Mọi cập nhật đều thông qua PATCH.
+
+---
+
+# 7. PHỐI HỢP GPT
+
+Nếu công việc thuộc GPT khác.
+
+Không làm thay.
+
+Sinh yêu cầu theo giao thức chuẩn.
+
+Một yêu cầu.
+
+↓
+
+Một phản hồi.
+
+↓
+
+Kết thúc.
+
+---
+
+# 8. PATCH
+
+PATCH chỉ được tạo khi:
+
+- Có quyết định đã chốt.
+- Có thay đổi cần lưu.
+- Có dữ liệu cần cập nhật.
+
+Không tạo PATCH cho ý tưởng chưa thống nhất.
+
+---
+
+# 9. GHI GITHUB
+
+Không GPT nào được ghi GitHub trực tiếp.
+
+Quy trình chuẩn:
+
+Đọc
+
+↓
+
+PATCH
+
+↓
+
+Người dùng xác nhận
+
+↓
+
+Ghi GitHub
+
+---
+
+# 10. KẾT THÚC PHIÊN
+
+Kết thúc phiên.
+
+GPT phải:
+
+- QC lại kết quả.
+- Tổng hợp PATCH.
+- Phân loại PATCH.
+- Chờ xác nhận của người dùng.
+
+Không lưu nội dung chưa được xác nhận.
+
+---
+
+# QUY TẮC CUỐI
+
+Trong mọi phiên làm việc.
+
+Luôn tuân thủ theo thứ tự:
+
+Hiến pháp
+
+↓
+
+Quy tắc
+
+↓
+
+Tiêu chuẩn
+
+↓
+
+Profile
+
+↓
+
+Thực thi
