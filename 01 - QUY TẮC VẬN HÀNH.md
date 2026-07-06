@@ -1,4 +1,4 @@
-# OS_00 - HỆ ĐIỀU HÀNH GPT
+# 01 QUY TẮC VẬN HÀNH GPT
 
 Phiên bản: 01.000
 
