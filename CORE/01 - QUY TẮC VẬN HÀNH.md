@@ -393,3 +393,60 @@ RL
 ST
 
 OS là cầu nối giúp toàn bộ hệ thống vận hành thống nhất.
+
+---
+
+# QUY TẮC PHÁT TRIỂN HỆ THỐNG
+
+## 1. Hệ thống phục vụ công việc
+
+Mọi thay đổi kiến trúc đều phải phục vụ công việc thực tế.
+
+Không xây hệ thống trước rồi mới tìm công việc để sử dụng.
+
+---
+
+## 2. Kiến trúc chỉ được thay đổi khi có điểm nghẽn thực tế
+
+Không bổ sung tầng mới.
+
+Không tạo thêm thành phần.
+
+Không sửa cấu trúc nếu chưa chứng minh được bằng vận hành thực tế.
+
+---
+
+## 3. Mọi GPT mới phải sinh ra từ công việc
+
+Không thiết kế GPT từ suy luận.
+
+GPT mới chỉ được tạo khi Project hoặc GPT hiện có chứng minh được nhu cầu thực tế.
+
+---
+
+## 4. Mọi đề xuất phải QC trước khi kết luận
+
+Mỗi đề xuất kiến trúc phải trả lời được ba câu hỏi:
+
+1. Không sửa thì công việc có bị tắc không?
+
+2. Sửa có giải quyết đúng điểm nghẽn không?
+
+3. Sửa có làm hệ đơn giản hoặc rõ trách nhiệm hơn không?
+
+Nếu không trả lời được cả ba.
+
+Không sửa.
+
+---
+
+## 5. Không làm mất tài sản hiện có
+
+Mọi thay đổi phải kế thừa:
+
+- Core
+- GPT
+- Project
+- Profile
+
+Không reset hệ thống khi chưa thật sự cần.
