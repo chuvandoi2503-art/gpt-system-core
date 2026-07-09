@@ -4,12 +4,6 @@ Phiên bản: 05.000
 
 ---
 
-# OBJECT
-
-HỒ SƠ
-
----
-
 # GPT ĐỌC FILE NÀY KHI NÀO
 
 GPT đọc file này khi công việc yêu cầu sử dụng Hồ sơ.
