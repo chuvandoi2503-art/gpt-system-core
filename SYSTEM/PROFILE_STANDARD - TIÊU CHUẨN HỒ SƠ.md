@@ -1,431 +1,129 @@
-# PROFILE_STANDARD
+# PROFILE_STANDARD - TIÊU CHUẨN HỒ SƠ
 
-Phiên bản: 04.001
+Phiên bản: 05.000
 
 ---
 
-# MỤC TIÊU
+# OBJECT
 
-Chuẩn hóa cấu trúc của một Profile.
+HỒ SƠ
 
-Profile là nguồn chân lý của một hệ cụ thể.
+---
+
+# GPT ĐỌC FILE NÀY KHI NÀO
+
+GPT đọc file này khi công việc yêu cầu sử dụng Hồ sơ.
 
 Ví dụ:
 
-- Thương hiệu
-- Dự án
-- Hệ giá trị
-- Không gian nội dung
-- Lĩnh vực nghiên cứu
-- Hoặc bất kỳ thực thể nào cần được nuôi lớn lâu dài.
+- Làm việc với thương hiệu.
+- Làm việc với dự án.
+- Làm việc với hệ giá trị.
+- Làm việc với không gian nội dung.
+- Làm việc với một thực thể có tri thức riêng.
+- Cần xác định dữ liệu đã có.
+- Cần xác định dữ liệu còn thiếu.
+- Cần tạo yêu cầu nghiên cứu.
+- Cần đề xuất cập nhật Hồ sơ.
 
-Profile không phải GPT.
+Không đọc file này khi:
 
-Profile không phải Memory.
-
-Profile không phải Prompt.
-
-Profile là một thực thể sống được nhiều GPT Engine cùng sử dụng.
-
----
-
-# TRIẾT LÝ
-
-GPT Engine là động cơ.
-
-Profile là đối tượng được vận hành.
-
-GitHub là nguồn chân lý.
-
-Session chỉ là nơi làm việc tạm thời.
+- Khởi tạo phiên thông thường.
+- Công việc chỉ dùng Memory của GPT.
+- Công việc không liên quan Hồ sơ.
 
 ---
 
-# NGUYÊN TẮC NỀN TẢNG
+# GPT ĐỌC FILE NÀY ĐỂ LÀM GÌ
 
-Một Profile không được thiết kế cho một GPT cụ thể.
+GPT đọc file này để biết cách:
 
-Một Profile phải đủ chuẩn để bất kỳ GPT Engine nào cũng có thể sử dụng.
-
-Profile không hướng dẫn GPT phải đọc gì.
-
-Profile chỉ cung cấp:
-
-- cấu trúc
-- chỉ mục
-- vị trí dữ liệu
-- trạng thái hiện tại
-- tài sản hiện có
-
-Việc đọc như thế nào thuộc trách nhiệm của GPT Engine.
+- Xác định có cần dùng Hồ sơ không.
+- Xác định Hồ sơ cần dùng.
+- Đọc điểm vào của Hồ sơ.
+- Chọn chế độ nạp.
+- Nạp đúng nhóm dữ liệu.
+- Không đọc toàn bộ Hồ sơ nếu không cần.
+- Xác định khoảng trống tri thức.
+- Tạo yêu cầu nghiên cứu khi thiếu dữ liệu.
+- Đề xuất cập nhật Hồ sơ sau khi có xác nhận.
 
 ---
 
-# MÔ HÌNH KIẾN TRÚC
+# NẾU KHÔNG CÓ FILE NÀY THÌ HỎNG GÌ
 
-Core
+Nếu không có file này:
 
-↓
-
-GPT Engine
-
-↓
-
-Profile
-
-↓
-
-Session
+- GPT có thể đọc toàn bộ Hồ sơ không cần thiết.
+- GPT có thể nhầm Hồ sơ với Memory của GPT.
+- GPT có thể lưu tri thức Hồ sơ vào sai nơi.
+- GPT có thể tạo thêm file Hồ sơ tùy tiện.
+- GPT có thể không biết khi nào cần nghiên cứu.
+- GPT có thể cập nhật Hồ sơ khi chưa có xác nhận.
 
 ---
 
-# PROFILE LÀ GÌ
+# NGUYÊN TẮC CORE
 
-Profile là hồ sơ sống của một thực thể.
+Core chỉ lưu quy tắc vận hành Hồ sơ.
 
-Profile có thể là:
+Core không lưu nội dung thật của Hồ sơ.
 
-- một thương hiệu
-- một dự án
-- một hệ giá trị
-- một lĩnh vực
-- một không gian nội dung
-- hoặc bất kỳ đối tượng nào người dùng muốn phát triển lâu dài.
+Core không lưu dữ liệu riêng của thương hiệu, dự án, kênh, người dùng hoặc hệ giá trị cụ thể.
 
-Profile không phụ thuộc GPT.
-
-GPT có thể thay đổi.
-
-Profile vẫn giữ nguyên.
+Hồ sơ thật phải nằm ngoài Core.
 
 ---
 
-# PROFILE KHÔNG CHỨA
+# HỒ SƠ LÀ GÌ
 
-Không lưu:
+Hồ sơ là nguồn tri thức sống của một thực thể.
 
-- Prompt của GPT Engine
-- Rule của GPT Engine
-- Workflow riêng của GPT Engine
-- Memory của GPT Engine
-- Kiến thức chỉ phục vụ riêng một GPT
+Một thực thể có thể là:
 
----
-
-# PROFILE CHỨA
-
-Profile lưu những gì thuộc về chính Profile.
-
-Bao gồm:
-
-- Danh tính
-- Định hướng
-- Hệ giá trị
-- Huyết mạch
-- Thế giới hiện diện
-- Chỉ mục tri thức
-- Tiến độ phát triển
-- Tài sản tái sử dụng
-
----
-
-# CẤU TRÚC CHUẨN
-
-Một Profile tối thiểu gồm:
-
-PF_00
-
-↓
-
-PF_01
-
-↓
-
-PF_02
-
-↓
-
-PF_03
-
-↓
-
-PF_04
-
-↓
-
-PF_05
-
----
-
-# PF_00
-
-MỤC LỤC HỒ SƠ
-
-Vai trò:
-
-Đây là điểm vào của Profile.
-
-PF_00 không chứa tri thức.
-
-PF_00 chỉ trả lời:
-
-- Hồ sơ là gì.
-- Có những phần nào.
-- Mỗi phần lưu loại dữ liệu gì.
-- File nào chứa loại dữ liệu nào.
-
-PF_00 không hướng dẫn GPT phải đọc gì.
-
----
-
-# PF_01
-
-DANH TÍNH VÀ HỆ GIÁ TRỊ
-
-Lưu phần gần như bất biến.
-
-Ví dụ:
-
-- Mục đích tồn tại.
-- Thương hiệu hướng tới.
+- Thương hiệu.
+- Dự án.
 - Hệ giá trị.
-- Huyết mạch.
-- Điều không làm.
-- Đối tượng hiện diện.
+- Không gian nội dung.
+- Lĩnh vực nghiên cứu.
+- Nhân vật.
+- Gia đình.
+- Sản phẩm.
+- Một hệ cần được phát triển lâu dài.
 
-Đây là phần thay đổi rất ít.
+Hồ sơ không phải GPT.
 
----
+Hồ sơ không phải Memory của GPT.
 
-# PF_02
+Hồ sơ không phải Prompt.
 
-THẾ GIỚI HIỆN DIỆN
-
-Đây là bản đồ của Profile.
-
-Không phải kho tri thức.
-
-PF_02 mô tả:
-
-Profile lựa chọn hiện diện ở đâu.
-
-Ví dụ:
-
-Gia đình
-
-↓
-
-Song ngữ
-
-↓
-
-Đọc sách
-
-↓
-
-...
-
-PF_02 không lưu nội dung chi tiết.
-
-Chỉ lưu cấu trúc và mối liên hệ.
+Hồ sơ không phải Workflow.
 
 ---
 
-# PF_03
+# MÔ HÌNH VẬN HÀNH
 
-CHỈ MỤC TRI THỨC
+GPT vận hành theo thứ tự:
 
-PF_03 không phải kho dữ liệu.
-
-PF_03 là chỉ mục.
-
-Nó trả lời:
-
-Profile đã có:
-
-- nhóm tri thức nào
-- dữ liệu nào
-- Reality Pack nào
-- nghiên cứu nào
-- nguồn nào
-- khoảng trống nào
-
-PF_03 ưu tiên khả năng truy xuất.
-
-Không ưu tiên lưu toàn bộ nội dung.
-
----
-
-# PF_04
-
-TIẾN ĐỘ VÀ VIỆC ĐANG MỞ
-
-PF_04 lưu:
-
-- đang phát triển đến đâu
-- đang nghiên cứu gì
-- đang kiểm thử gì
-- việc nào đang mở
-- bước tiếp theo
-
-PF_04 thay đổi thường xuyên.
-
-PF_04 không lưu lịch sử.
-
----
-
-# PF_05
-
-TÀI SẢN TÁI SỬ DỤNG
-
-Lưu:
-
-- Reality Pack
-- Checklist
-- Template
-- Framework
-- Quy trình
-- Bộ dữ liệu đã đóng gói
-- Mẫu đầu vào
-- Mẫu đầu ra
-
-PF_05 chỉ lưu thứ có thể tái sử dụng.
-
----
-
-# VÒNG ĐỜI DỮ LIỆU
-
-Mỗi phần của Profile có vòng đời khác nhau.
-
-PF_01
-
+```text
+Yêu cầu công việc
 ↓
-
-Gần như bất biến.
-
-PF_02
-
+Xác định có cần Hồ sơ không
 ↓
-
-Thay đổi ít.
-
-PF_03
-
+Xác định Hồ sơ cần dùng
 ↓
-
-Tăng trưởng liên tục.
-
-PF_04
-
+Đọc điểm vào Hồ sơ
 ↓
-
-Thay đổi gần như mỗi phiên.
-
-PF_05
-
+Chọn chế độ nạp
 ↓
-
-Tăng trưởng theo tài sản.
-
-Mỗi loại dữ liệu phải được lưu đúng vị trí.
-
-Không được lưu sai vòng đời.
-
----
-
-# CHỈ MỤC
-
-Profile phải giúp GPT tìm đúng thông tin.
-
-Không phải đọc toàn bộ hồ sơ.
-
-Mọi thông tin trong Profile phải có khả năng:
-
-- định vị
-- truy xuất
-- mở rộng
-- tái sử dụng
-
----
-
-# GPT ENGINE ĐỌC PROFILE
-
-Profile không quy định GPT phải đọc gì.
-
-Mỗi GPT Engine tự có Rule đọc Profile.
-
-Ví dụ:
-
-GPT Content
-
+Nạp đúng nhóm dữ liệu
 ↓
-
-Đọc theo Rule của GPT Content.
-
-GPT Research
-
+Xác định dữ liệu đã có
 ↓
-
-Đọc theo Rule của GPT Research.
-
-GPT Kiến Trúc Sư
-
+Xác định dữ liệu còn thiếu
 ↓
-
-Đọc theo Rule của GPT Kiến Trúc Sư.
-
-Nếu sau này xuất hiện GPT mới.
-
-Không cần sửa Profile.
-
-Chỉ cần định nghĩa Rule đọc Profile cho GPT đó.
-
----
-
-# NGUYÊN TẮC THIẾT KẾ
-
-Một Profile tốt là Profile:
-
-- không phụ thuộc GPT
-- không phụ thuộc Prompt
-- không phụ thuộc Memory
-- không phụ thuộc số lượng GPT
-- không phụ thuộc số lượng phiên
-
-Profile chỉ phụ thuộc chính thực thể mà nó đại diện.
-
----
-
-# NGUYÊN TẮC MỞ RỘNG
-
-Khi Profile lớn lên.
-
-Không được sửa cấu trúc.
-
-Chỉ mở rộng dữ liệu.
-
-Nếu cần sửa cấu trúc.
-
-Phải cập nhật PROFILE_STANDARD trước.
-
-Sau đó mới cập nhật từng Profile.
-
----
-
-# NGUYÊN TẮC CUỐI CÙNG
-
-Profile là cuốn sách.
-
-GPT Engine là nhà nghiên cứu.
-
-Một cuốn sách tốt không dạy người đọc phải đọc chương nào.
-
-Một cuốn sách tốt chỉ cần:
-
-- cấu trúc rõ
-- chỉ mục tốt
-- dữ liệu đúng chỗ
-
-Việc đọc như thế nào là trách nhiệm của người đọc.
-
-Đó cũng là trách nhiệm của GPT Engine.
+Tạo yêu cầu nghiên cứu nếu cần
+↓
+Tạo đầu ra
+↓
+Đề xuất cập nhật Hồ sơ nếu có dữ liệu đã xác nhận
